@@ -93,6 +93,11 @@
 }
 .p-exercise-log input:focus { outline: none; border-color: var(--day-accent, var(--border-strong)); }
 .p-exercise-log input::placeholder { color: var(--text-3); }
+.p-exercise-log .p-check {
+  width: auto;
+  flex: none;
+  padding: 6px 0;
+}
 
 /* ---- water ---- */
 .p-water {
