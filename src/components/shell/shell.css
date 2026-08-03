@@ -92,12 +92,24 @@
   margin-bottom: 8px;
 }
 .onboarding input[type='date'] {
+  /* iOS Safari gives date inputs an intrinsic width and ignores width:100%
+     unless appearance is reset — otherwise it overflows the viewport */
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 52px;
   padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-m);
   font-size: 17px;
+  text-align: left;
+}
+.onboarding input[type='date']::-webkit-date-and-time-value {
+  text-align: left;
 }
 .btn-primary {
   display: block;
