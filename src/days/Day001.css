@@ -1,0 +1,220 @@
+/* Day 1 — "editorial ledger": a fresh cream ledger page, ink type, red stamp.
+   Deliberately light against the dark shell — opening it should feel like
+   starting a brand-new notebook. */
+
+.d1 {
+  /* re-theme the token system for this page only */
+  --bg: #f6f2e9;
+  --surface: #fdfbf6;
+  --surface-2: #eee8da;
+  --border: rgba(26, 24, 20, 0.12);
+  --border-strong: rgba(26, 24, 20, 0.32);
+  --text: #1a1814;
+  --text-2: #57524a;
+  --text-3: #8d867a;
+  --day-accent: #c73e2e;
+  --day-surface: var(--surface);
+  --day-border: var(--border);
+
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: Georgia, 'Times New Roman', serif;
+  color-scheme: light;
+}
+
+.d1-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 24px calc(40px + env(safe-area-inset-bottom));
+}
+
+.d1 .sans {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* ---- masthead ---- */
+.d1-mast {
+  border-bottom: 3px double var(--border-strong);
+  padding-bottom: 20px;
+  margin-bottom: 4px;
+}
+.d1-mast .top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.d1-kicker {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--text-3);
+}
+.d1-num {
+  font-size: 124px;
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.d1-num .of {
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  font-style: italic;
+}
+.d1-title {
+  font-size: 27px;
+  font-style: italic;
+  margin-top: 10px;
+  letter-spacing: -0.01em;
+}
+.d1-stamp {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--day-accent);
+  border: 2px solid var(--day-accent);
+  border-radius: 4px;
+  padding: 5px 9px;
+  transform: rotate(3deg);
+  opacity: 0.85;
+}
+
+/* ---- coach's note ---- */
+.d1-note {
+  font-size: 16.5px;
+  line-height: 1.65;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.d1-note::first-letter {
+  font-size: 300%;
+  float: left;
+  line-height: 0.85;
+  padding-right: 8px;
+  color: var(--day-accent);
+}
+
+/* ---- sections ---- */
+.d1-section {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.d1-section:last-of-type { border-bottom: none; }
+.d1-h {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.d1-h .no {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--day-accent);
+  font-variant-numeric: tabular-nums;
+}
+.d1-h h2 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.d1-h .why {
+  font-size: 13px;
+  color: var(--text-3);
+  font-style: italic;
+  margin-left: auto;
+  text-align: right;
+}
+.d1-p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin-bottom: 12px;
+}
+
+/* measurement link card */
+.d1-measure-link {
+  display: block;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--surface);
+  border: 1px dashed var(--border-strong);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  transition: transform 140ms var(--ease-out);
+}
+.d1-measure-link:active { transform: scale(0.98); }
+.d1-measure-link .arrow { color: var(--day-accent); }
+
+/* primitives on paper: sans-serif where they're functional */
+.d1 .p-check,
+.d1 .p-exercise,
+.d1 .p-macros,
+.d1 .p-notes,
+.d1 .p-water-count {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+.d1 .p-exercise {
+  box-shadow: 0 1px 2px rgba(26, 24, 20, 0.05);
+}
+.d1 .p-notes {
+  background: repeating-linear-gradient(
+    var(--surface),
+    var(--surface) 27px,
+    var(--border) 27px,
+    var(--border) 28px
+  );
+  line-height: 28px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+/* meal rows */
+.d1-meal {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px 0;
+}
+.d1-meal .when {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  min-width: 74px;
+}
+.d1-meal .what { font-size: 15px; line-height: 1.5; }
+.d1-meal .protein {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--day-accent);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* footer sign-off */
+.d1-signoff {
+  text-align: center;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-2);
+  padding: 28px 0 4px;
+}
+.d1-signoff .rule {
+  width: 48px;
+  height: 1px;
+  background: var(--border-strong);
+  margin: 0 auto 16px;
+}
+
+/* entrance: rise handled by shared .rise keyframes */

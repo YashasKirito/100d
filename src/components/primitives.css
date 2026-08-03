@@ -1,0 +1,188 @@
+/* Day-page primitives. Pages theme them by setting --day-accent (and
+   optionally --day-surface / --day-border) on any ancestor. */
+
+.p-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 4px;
+  transition: opacity 180ms ease;
+}
+.p-check .box {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 7px;
+  border: 1.5px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  transition: background 160ms ease, border-color 160ms ease, transform 140ms var(--ease-out);
+}
+.p-check:active .box { transform: scale(0.88); }
+.p-check .box svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--bg);
+  stroke-width: 3;
+  fill: none;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 220ms var(--ease-out) 40ms;
+}
+.p-check[data-checked='true'] .box {
+  background: var(--day-accent, var(--text));
+  border-color: var(--day-accent, var(--text));
+}
+.p-check[data-checked='true'] .box svg { stroke-dashoffset: 0; }
+.p-check[data-checked='true'] .p-check-label {
+  opacity: 0.55;
+}
+.p-check-label {
+  font-size: 15.5px;
+  transition: opacity 180ms ease;
+}
+.p-check-sub {
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+/* ---- exercise card ---- */
+.p-exercise {
+  border: 1px solid var(--day-border, var(--border));
+  background: var(--day-surface, var(--surface));
+  border-radius: var(--radius-m);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.p-exercise-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.p-exercise-name { font-weight: 700; font-size: 15.5px; }
+.p-exercise-rx {
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--day-accent, var(--text-2));
+  white-space: nowrap;
+}
+.p-exercise-note {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-top: 4px;
+}
+.p-exercise-log {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+.p-exercise-log input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.p-exercise-log input:focus { outline: none; border-color: var(--day-accent, var(--border-strong)); }
+.p-exercise-log input::placeholder { color: var(--text-3); }
+
+/* ---- water ---- */
+.p-water {
+  display: flex;
+  gap: 7px;
+}
+.p-water button {
+  flex: 1;
+  aspect-ratio: 0.72;
+  border-radius: 8px 8px 11px 11px;
+  border: 1.5px solid var(--border-strong);
+  position: relative;
+  overflow: hidden;
+  transition: transform 140ms var(--ease-out), border-color 160ms ease;
+}
+.p-water button:active { transform: scale(0.9); }
+.p-water button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--day-accent, #4aa8e8);
+  transform: translateY(100%);
+  transition: transform 260ms var(--ease-out);
+}
+.p-water button[data-filled='true'] { border-color: var(--day-accent, #4aa8e8); }
+.p-water button[data-filled='true']::after { transform: translateY(0); }
+.p-water-count {
+  font-size: 12.5px;
+  color: var(--text-3);
+  margin-top: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- macros ---- */
+.p-macros {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.p-macro {
+  border: 1px solid var(--day-border, var(--border));
+  background: var(--day-surface, var(--surface));
+  border-radius: var(--radius-s);
+  padding: 10px 12px;
+  text-align: center;
+}
+.p-macro .v {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+.p-macro .k {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ---- notes ---- */
+.p-notes {
+  width: 100%;
+  min-height: 96px;
+  resize: vertical;
+  padding: 14px 16px;
+  background: var(--day-surface, var(--surface));
+  border: 1px solid var(--day-border, var(--border));
+  border-radius: var(--radius-m);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.p-notes:focus { outline: none; border-color: var(--day-accent, var(--border-strong)); }
+.p-notes::placeholder { color: var(--text-3); }
+
+/* ---- day nav ---- */
+.p-daynav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.p-daynav a, .p-daynav span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-2);
+  padding: 10px 0;
+}
+.p-daynav span { color: var(--text-3); }
+.p-daynav .home { color: var(--text-3); font-size: 13px; }
