@@ -1,6 +1,33 @@
 /* Day-page primitives. Pages theme them by setting --day-accent (and
    optionally --day-surface / --day-border) on any ancestor. */
 
+.p-check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.p-check-row .p-check {
+  flex: 1;
+  min-width: 0;
+}
+
+.p-info {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--day-accent, var(--border-strong));
+  color: var(--day-accent, var(--text-2));
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-grid;
+  place-items: center;
+  vertical-align: 2px;
+  margin-left: 8px;
+}
+
 .p-check {
   display: flex;
   align-items: center;

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDayProgress } from '../hooks/useDayProgress'
 import {
@@ -8,11 +9,13 @@ import {
   NotesBox,
   WaterTracker,
 } from '../components/primitives'
+import { ExerciseSheet } from '../components/ExerciseSheet'
+import { EXERCISES } from '../lib/exercises'
 import './Day001.css'
 
 const DAY = 1
 
-const EXERCISES = [
+const EXERCISES_LIST = [
   {
     id: 'incline-pushup',
     name: 'Incline push-up · on dumbbell handles',
@@ -71,9 +74,13 @@ const HABITS = [
   { id: 'photos', label: 'Baseline photos', sub: 'front · side · back, same spot you’ll use for 100 days' },
 ]
 
+// every check on this page + water as one item — powers the dashboard %
+const TOTAL_ITEMS = REHAB.length + EXERCISES_LIST.length + POSTURE.length + HABITS.length + 1
+
 export default function Day001() {
-  const { progress, toggleCheck, setLog, setWater, setNotes } = useDayProgress(DAY)
+  const { progress, toggleCheck, setLog, setWater, setNotes } = useDayProgress(DAY, TOTAL_ITEMS)
   const c = progress.checks
+  const [infoId, setInfoId] = useState<string | null>(null)
 
   return (
     <div className="d1">
@@ -128,6 +135,7 @@ export default function Day001() {
               onToggle={() => toggleCheck(`rehab:${r.id}`)}
               label={r.label}
               sub={r.sub}
+              onInfo={() => setInfoId(r.id)}
             />
           ))}
         </section>
@@ -142,7 +150,7 @@ export default function Day001() {
             Warm up first: arm circles ×10, cat-cow ×8, wrist circles 30s, 10 easy squats.
             All pushing happens on the dumbbell handles — wrists straight, always.
           </p>
-          {EXERCISES.map((e) => (
+          {EXERCISES_LIST.map((e) => (
             <ExerciseCard
               key={e.id}
               id={e.id}
@@ -153,6 +161,7 @@ export default function Day001() {
               onToggle={() => toggleCheck(`exercise:${e.id}`)}
               log={progress.logs[`reps:${e.id}`]}
               onLog={(v) => setLog(`reps:${e.id}`, v)}
+              onInfo={() => setInfoId(e.id)}
             />
           ))}
         </section>
@@ -170,6 +179,7 @@ export default function Day001() {
               onToggle={() => toggleCheck(`posture:${p.id}`)}
               label={p.label}
               sub={p.sub}
+              onInfo={() => setInfoId(p.id)}
             />
           ))}
         </section>
@@ -235,6 +245,8 @@ export default function Day001() {
 
         <DayNav day={DAY} />
       </div>
+
+      <ExerciseSheet info={infoId ? (EXERCISES[infoId] ?? null) : null} onClose={() => setInfoId(null)} />
     </div>
   )
 }

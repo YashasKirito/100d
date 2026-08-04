@@ -9,14 +9,22 @@ import { emptyDay, type DayProgress } from '../lib/types'
  *   checks — "exercise:<id>" | "habit:<id>" | "rehab" | "posture" | "meal:<id>"
  *   logs   — "reps:<id>" | "weight:<id>" (free-form strings, e.g. "10,9,8")
  */
-export function useDayProgress(day: number) {
+export function useDayProgress(day: number, totalItems?: number) {
   const [progress, setProgress] = useState<DayProgress>(emptyDay)
   const dirty = useRef(false)
 
   useEffect(() => {
-    setProgress(loadDay(day, (fresh) => setProgress(fresh)))
-    dirty.current = false
-  }, [day])
+    let loaded = loadDay(day, (fresh) => setProgress(fresh))
+    // record how many completable items this page has, so the dashboard
+    // can render "% of today done" without loading the page component
+    if (totalItems && loaded.total !== totalItems) {
+      loaded = { ...loaded, total: totalItems }
+      dirty.current = true
+    } else {
+      dirty.current = false
+    }
+    setProgress(loaded)
+  }, [day, totalItems])
 
   // debounce persistence
   useEffect(() => {

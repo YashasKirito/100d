@@ -25,10 +25,18 @@ When the user asks for the next day's page:
    Rotate moods: editorial, brutalist, playful, neon terminal, Swiss grid, handwritten,
    retro sport, minimal mono… Invoke the `emil-design-eng` skill before designing.
 4. **Craft `src/days/DayNNN.tsx` (+ `DayNNN.css`).** Design is free-form, but the page MUST:
-   - call `useDayProgress(N)` for all state (checks/logs/water/notes) — key conventions:
-     `exercise:<id>`, `rehab:<id>`, `posture:<id>`, `habit:<id>`, `reps:<id>` in logs
+   - call `useDayProgress(N, TOTAL_ITEMS)` for all state (checks/logs/water/notes) —
+     TOTAL_ITEMS = number of checkboxes on the page + 1 (water). This powers the
+     dashboard's per-day completion %. Key conventions: `exercise:<id>`, `rehab:<id>`,
+     `posture:<id>`, `habit:<id>`, `reps:<id>` in logs
    - include workout (with rep logging), rehab/posture where the program says, meals with
      protein counts, `WaterTracker`, habits, `NotesBox`, `DayNav`
+   - give every exercise/rehab/posture item an `onInfo` opening the `ExerciseSheet`
+     (`src/components/ExerciseSheet.tsx`). Any NEW movement not yet in
+     `src/lib/exercises.ts` gets an entry there (steps/cues/mistakes, wristNote if
+     pushing) AND an animated SMIL pictogram in
+     `src/components/pictograms/Pictograms.tsx` — same stick-figure style, currentColor
+     strokes, poses tweened with the `A` helper
    - stay mobile-first (max-width ~480px column) and respect `prefers-reduced-motion`
    - write coaching copy in the program's voice: direct, honest, why-first
    - shared primitives live in `src/components/primitives.tsx`; theme them via

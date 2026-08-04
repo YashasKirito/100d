@@ -6,29 +6,49 @@ import './primitives.css'
    these entirely — but if used, they wire cleanly into useDayProgress and
    inherit the page's --day-accent theme. */
 
+function InfoDot({ onInfo, name }: { onInfo: () => void; name: string }) {
+  return (
+    <button
+      className="p-info press"
+      aria-label={`How to do ${name}`}
+      onClick={(e) => {
+        e.stopPropagation()
+        onInfo()
+      }}
+    >
+      ?
+    </button>
+  )
+}
+
 export function CheckItem({
   checked,
   onToggle,
   label,
   sub,
+  onInfo,
 }: {
   checked: boolean
   onToggle: () => void
   label: string
   sub?: string
+  onInfo?: () => void
 }) {
   return (
-    <button className="p-check" data-checked={checked} onClick={onToggle}>
-      <span className="box">
-        <svg viewBox="0 0 16 16" aria-hidden>
-          <path d="M2.5 8.5l3.5 3.5 7-8" />
-        </svg>
-      </span>
-      <span>
-        <span className="p-check-label">{label}</span>
-        {sub && <div className="p-check-sub">{sub}</div>}
-      </span>
-    </button>
+    <div className="p-check-row">
+      <button className="p-check" data-checked={checked} onClick={onToggle}>
+        <span className="box">
+          <svg viewBox="0 0 16 16" aria-hidden>
+            <path d="M2.5 8.5l3.5 3.5 7-8" />
+          </svg>
+        </span>
+        <span>
+          <span className="p-check-label">{label}</span>
+          {sub && <div className="p-check-sub">{sub}</div>}
+        </span>
+      </button>
+      {onInfo && <InfoDot onInfo={onInfo} name={label} />}
+    </div>
   )
 }
 
@@ -41,6 +61,7 @@ export function ExerciseCard({
   onToggle,
   log,
   onLog,
+  onInfo,
   logPlaceholder = 'log reps, e.g. 10, 9, 8',
 }: {
   id: string
@@ -51,12 +72,16 @@ export function ExerciseCard({
   onToggle: () => void
   log?: string
   onLog?: (v: string) => void
+  onInfo?: () => void
   logPlaceholder?: string
 }) {
   return (
     <div className="p-exercise">
       <div className="p-exercise-head">
-        <span className="p-exercise-name">{name}</span>
+        <span className="p-exercise-name">
+          {name}
+          {onInfo && <InfoDot onInfo={onInfo} name={name} />}
+        </span>
         <span className="p-exercise-rx">{rx}</span>
       </div>
       {note && <div className="p-exercise-note">{note}</div>}

@@ -7,6 +7,9 @@ export interface DayProgress {
   logs: Record<string, string>
   water: number
   notes: string
+  /** total completable items on the page (all checks + 1 for water) —
+   *  written by useDayProgress so the dashboard can show % complete */
+  total?: number
   updatedAt: number
 }
 

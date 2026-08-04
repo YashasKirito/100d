@@ -118,6 +118,23 @@ export function sessionForDate(date: Date, day: number): SessionKind {
   return kind
 }
 
+/** A day counts as "done" at this completion fraction — showing up beats perfection. */
+export const DONE_THRESHOLD = 0.75
+
+/** 0..1 completion of a day. Water counts as one item, filled fractionally. */
+export function completionPct(d: {
+  checks: Record<string, boolean>
+  water: number
+  total?: number
+}): number {
+  const done = Object.values(d.checks).filter(Boolean).length
+  if (d.total && d.total > 0) {
+    return Math.min((done + Math.min(d.water / 10, 1)) / d.total, 1)
+  }
+  // legacy record without a stored total — show a sliver, not a full square
+  return done > 0 || d.water > 0 ? 0.2 : 0
+}
+
 /** Consecutive-day streak ending today (or yesterday if today untouched). */
 export function computeStreak(completedDays: Set<number>, todayNumber: number): number {
   let streak = 0

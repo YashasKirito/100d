@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import { useProfile } from '../../hooks/useProfile'
 import { daysWithProgress } from '../../lib/store'
 import {
+  DONE_THRESHOLD,
   PHASES,
   TOTAL_DAYS,
+  completionPct,
   computeStreak,
   dateForDay,
   formatDate,
@@ -25,7 +27,9 @@ export function Dashboard() {
   const today = Math.min(Math.max(todayNumber, 1), TOTAL_DAYS)
   const notStarted = todayNumber < 1
   const finished = todayNumber > TOTAL_DAYS
-  const doneSet = new Set(progressDays.keys())
+  const pcts = new Map<number, number>()
+  for (const [n, d] of progressDays) pcts.set(n, completionPct(d))
+  const doneSet = new Set([...pcts].filter(([, p]) => p >= DONE_THRESHOLD).map(([n]) => n))
   const streak = computeStreak(doneSet, today)
   const phase = phaseForDay(today)
   const todayEntry = dayEntry(today)
@@ -133,23 +137,40 @@ export function Dashboard() {
             const n = i + 1
             const isPast = !notStarted && n < today
             const isToday = !notStarted && !finished && n === today
-            const done = doneSet.has(n)
+            const pct = pcts.get(n) ?? 0
+            const color = phaseForDay(n).color
             const cls = [
               'cell',
               isToday ? 'today' : '',
-              done ? 'done' : isPast ? 'missed' : !isToday ? 'future' : '',
+              pct > 0 ? '' : isPast ? 'missed' : !isToday ? 'future' : '',
             ]
               .filter(Boolean)
               .join(' ')
-            const style = done ? { background: phaseForDay(n).color } : undefined
+            // squares fill bottom-up with the day's completion percentage
+            const style =
+              pct >= 0.995
+                ? { background: color }
+                : pct > 0
+                  ? {
+                      background: `linear-gradient(to top, ${color} ${Math.round(pct * 100)}%, var(--surface-2) ${Math.round(pct * 100)}%)`,
+                    }
+                  : undefined
             return isPast || isToday ? (
-              <Link key={n} to={`/day/${n}`} className={cls} style={style} aria-label={`Day ${n}`} />
+              <Link
+                key={n}
+                to={`/day/${n}`}
+                className={cls}
+                style={style}
+                aria-label={`Day ${n} — ${Math.round(pct * 100)}% done`}
+              />
             ) : (
               <div key={n} className={cls} style={style} />
             )
           })}
         </div>
-        <div className="grid-caption">Every square is a day. Fill them all.</div>
+        <div className="grid-caption">
+          Squares fill as you complete the day. {Math.round(DONE_THRESHOLD * 100)}%+ counts for the streak.
+        </div>
       </section>
 
       <section className="nav-cards">

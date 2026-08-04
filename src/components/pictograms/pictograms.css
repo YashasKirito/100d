@@ -1,0 +1,29 @@
+.pict {
+  width: 100%;
+  height: auto;
+  display: block;
+  stroke: currentColor;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.pict .faint {
+  opacity: 0.28;
+  stroke-width: 3;
+}
+
+.pict .dashed {
+  stroke-dasharray: 4 7;
+}
+
+.pict .db {
+  fill: currentColor;
+  stroke: none;
+}
+
+.pict .db-fill {
+  fill: currentColor;
+  stroke: none;
+}
