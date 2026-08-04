@@ -17,9 +17,11 @@ When the user asks for the next day's page:
    a measurement day (1, 14, 28, 42, 56, 70, 84, 100), or a milestone/test day. Session
    type comes from the actual weekday of day N (Mon Push A · Tue Pull A · Wed rest ·
    Thu Push B · Fri Pull B · Sat gym upper · Sun gym lower — Phase 1 & deloads: Sunday rest).
-2. **Ask how today went** — weights/reps hit, wrist status (any pain above 2/10 → drop a
-   rung and add rehab), energy, food. Apply progression: beat the log by 1–2 reps, advance
-   a ladder rung at 3×12 clean.
+2. **Pull today's data**: `node scripts/pull-day.mjs <today>` (needs
+   `.secrets/firebase-admin.json`, see the script header). Review checks, logged reps,
+   water, and notes. Then **ask how today went** — wrist status (any pain above 2/10 →
+   drop a rung and add rehab), energy, food. Apply progression: beat the log by 1–2 reps,
+   advance a ladder rung at 3×12 clean.
 3. **Read the last 2–3 day pages** (`src/days/`) and the `theme` fields in
    `src/days/registry.ts` — the new page must NOT repeat a recent design personality.
    Rotate moods: editorial, brutalist, playful, neon terminal, Swiss grid, handwritten,

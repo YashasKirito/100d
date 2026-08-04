@@ -71,7 +71,9 @@ async function get(path, token) {
 }
 
 const token = await accessToken()
-const users = (await get('users', token))?.documents ?? []
+// showMissing surfaces uid docs that only exist as parents of subcollections
+const listed = await get('users?showMissing=true&pageSize=50', token)
+const users = listed?.documents ?? []
 if (!users.length) {
   console.log('No users found in Firestore yet — has the app synced while signed in?')
   process.exit(0)

@@ -87,7 +87,11 @@ function load<T extends { updatedAt: number }>(
 ): T {
   const local = readLocal<T>(key) ?? fallback
   fetchRemote<T>(key).then((remote) => {
-    if (!remote) return
+    if (!remote) {
+      // first sign-in on a fresh Firestore: seed it with whatever exists locally
+      if (local.updatedAt > 0) pushRemote(key, local)
+      return
+    }
     if (remote.updatedAt > local.updatedAt) {
       writeLocal(key, remote)
       onFresh?.(remote)
