@@ -187,16 +187,24 @@ Intensity: push hard weeks 71–84, deload 85–91, then 92–100 "victory lap" 
 
 **Why no deficit:** at 70kg/5'11" you don't have a calorie problem, you have a muscle problem. Eat at maintenance, train hard, and the belly shrinks as the shoulders grow. If waist hasn't budged by Day 45 review, drop to 2,200.
 
-### Meal skeleton (repeats daily, rotate options)
+### Meal skeleton — built on the real diet (updated Day 1)
 
-| Meal | Time | Target | Options (pick one) |
-|------|------|--------|--------------------|
-| Breakfast | ~9:30 | 30g P | ① 3 whole eggs + 2 whites bhurji, 2 roti/2 toast ② Oats 60g in milk + whey ½ scoop + banana ③ 3-egg omelette + poha (light oil) |
-| Lunch | ~13:30 | 40g P | ① Chicken curry 150g cooked + rice + salad + curd 100g ② Fish curry 150g + rice + veg ③ Office/tiffin: dal + rice + 2 boiled eggs added + curd |
-| Snack | ~17:00 | 25g P | ① Whey 1 scoop + fruit ② Curd 200g + peanuts 20g ③ Sprouts chaat + 2 boiled eggs ④ Paneer bhurji 100g |
-| Dinner | ~21:00 | 40g P | ① Grilled/tandoori chicken 150g + 2 roti + veg ② Egg curry (3 eggs) + 2 roti + salad ③ Fish fry 150g + dal + 1 roti ④ Paneer 150g + dal + 1 roti |
+His actual base (Bengaluru, South Karnataka): rice + sambar 2–3×/day, **ragi mudde every
+night**, chicken 2–3×/week, 2 eggs added at breakfast. Don't fight this — protein gets
+bolted ONTO it. Ragi is good food (calcium, iron, satiety, ~7g protein per 100g dry) but
+it is NOT a protein source — one mudde ≈ 7g protein and ~340 kcal. Extra mudde = extra
+calories, not extra muscle. One mudde a night, always paired with a protein main.
 
-**Grocery staples:** eggs (2 dozen/wk), chicken breast/thigh 1kg/wk, fish 500g/wk, paneer 400g/wk, curd/dahi daily, dal, whey protein (1 scoop/day ≈ 24g protein — the cheapest insurance for hitting 135g), oats, peanuts, seasonal fruit.
+| Meal | Target | The build |
+|------|--------|-----------|
+| Breakfast | 20–25g | 3 eggs (up from 2) + usual base (idli/dosa/toast). Egg #4 when hungry. |
+| Lunch | 30–40g | Rice + **thick, dal-heavy sambar** + 2 boiled eggs on the side + curd 200g |
+| Snack | 15–25g | Whey when it arrives (1 scoop = 24g) · until then: milk 250ml + peanuts / sprouts usali |
+| Dinner | 35–45g | Ragi mudde ×1 + the protein main: chicken curry 150g (target 4–5 nights/wk) · egg curry (3 eggs) · paneer 150g · **soya-chunk curry (40g dry = ~20g protein — the cheapest protein in India, takes up sambar masala beautifully)** |
+
+**Grocery staples:** eggs (3 dozen/wk), chicken 1kg/wk, curd daily, toor dal (thick sambar),
+soya chunks (₹60/250g — learn one curry), paneer, sprouts/moong, peanuts, milk, whey
+(1 scoop/day non-negotiable once it arrives), ragi flour as usual.
 **Eating out rule:** order protein first (tandoori/grill anything), skip the sugary drink, done. No guilt, no "restart Monday."
 **Commute-proofing:** breakfast and snack are the two meals that die to a busy day — prep boiled eggs in batches of 6, keep whey + shaker at office.
 

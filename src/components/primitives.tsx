@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { dayEntry } from '../days/registry'
 import './primitives.css'
@@ -62,6 +63,7 @@ export function ExerciseCard({
   log,
   onLog,
   onInfo,
+  timer,
   logPlaceholder = 'log reps, e.g. 10, 9, 8',
 }: {
   id: string
@@ -73,6 +75,8 @@ export function ExerciseCard({
   log?: string
   onLog?: (v: string) => void
   onInfo?: () => void
+  /** timed hold (plank, dead hang): shows an inline stopwatch that logs seconds */
+  timer?: boolean
   logPlaceholder?: string
 }) {
   return (
@@ -85,6 +89,9 @@ export function ExerciseCard({
         <span className="p-exercise-rx">{rx}</span>
       </div>
       {note && <div className="p-exercise-note">{note}</div>}
+      {timer && onLog && (
+        <Stopwatch onLog={(s) => onLog(log?.trim() ? `${log.trim()}, ${s}s` : `${s}s`)} />
+      )}
       <div className="p-exercise-log">
         {onLog && (
           <input
@@ -96,6 +103,62 @@ export function ExerciseCard({
         )}
         <CheckItem key={id} checked={checked} onToggle={onToggle} label="" />
       </div>
+    </div>
+  )
+}
+
+/** Inline stopwatch for timed holds (plank, dead hang). "Log" writes the
+ *  elapsed seconds into the exercise's rep log. */
+export function Stopwatch({ onLog }: { onLog?: (seconds: number) => void }) {
+  const [running, setRunning] = useState(false)
+  const [elapsed, setElapsed] = useState(0) // ms
+  const startAt = useRef(0)
+
+  useEffect(() => {
+    if (!running) return
+    const id = setInterval(() => setElapsed(Date.now() - startAt.current), 100)
+    return () => clearInterval(id)
+  }, [running])
+
+  const toggle = () => {
+    if (running) {
+      setElapsed(Date.now() - startAt.current)
+      setRunning(false)
+    } else {
+      startAt.current = Date.now() - elapsed
+      setRunning(true)
+    }
+  }
+
+  const secs = elapsed / 1000
+  const display = `${Math.floor(secs / 60) ? `${Math.floor(secs / 60)}:` : ''}${
+    Math.floor(secs / 60) ? String(Math.floor(secs % 60)).padStart(2, '0') : Math.floor(secs % 60)
+  }.${Math.floor((secs % 1) * 10)}`
+
+  return (
+    <div className="p-stopwatch" data-running={running}>
+      <span className="p-stopwatch-time tabular">{display}s</span>
+      <button className="p-stopwatch-btn press" onClick={toggle}>
+        {running ? 'Stop' : elapsed ? 'Resume' : 'Start'}
+      </button>
+      {!running && elapsed > 0 && (
+        <>
+          {onLog && (
+            <button
+              className="p-stopwatch-btn log press"
+              onClick={() => {
+                onLog(Math.round(secs))
+                setElapsed(0)
+              }}
+            >
+              Log {Math.round(secs)}s
+            </button>
+          )}
+          <button className="p-stopwatch-btn ghost press" onClick={() => setElapsed(0)}>
+            Reset
+          </button>
+        </>
+      )}
     </div>
   )
 }

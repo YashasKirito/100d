@@ -358,7 +358,40 @@ function WallAngels() {
   )
 }
 
+function ThoracicExt() {
+  return (
+    <Svg label="thoracic extension arching over a chair back">
+      <Ground />
+      {/* chair: seat + backrest */}
+      <line x1="76" y1="92" x2="120" y2="92" className="faint" />
+      <line x1="80" y1="92" x2="80" y2="60" className="faint" />
+      <line x1="84" y1="92" x2="84" y2="126" className="faint" />
+      <line x1="114" y1="92" x2="114" y2="126" className="faint" />
+      {/* thighs + shins seated */}
+      <line x1="104" y1="90" x2="138" y2="94" />
+      <line x1="138" y1="94" x2="138" y2="126" />
+      {/* torso arching back over the backrest edge */}
+      <line x1="104" y1="90" x2="94" y2="52">
+        <A at="x2" v={[94, 76, 94]} dur="3s" />
+        <A at="y2" v={[52, 58, 52]} dur="3s" />
+      </line>
+      <circle cx="92" cy="42" r="8">
+        <A at="cx" v={[92, 66, 92]} dur="3s" />
+        <A at="cy" v={[42, 54, 42]} dur="3s" />
+      </circle>
+      {/* elbows-wide arms hinted as a short line at the head */}
+      <line x1="98" y1="46" x2="108" y2="38">
+        <A at="x1" v={[98, 72, 98]} dur="3s" />
+        <A at="y1" v={[46, 60, 46]} dur="3s" />
+        <A at="x2" v={[108, 84, 108]} dur="3s" />
+        <A at="y2" v={[38, 46, 38]} dur="3s" />
+      </line>
+    </Svg>
+  )
+}
+
 const PICTOGRAMS: Record<string, () => ReactNode> = {
+  'thoracic-ext': ThoracicExt,
   squat: Squat,
   'incline-pushup': InclinePushup,
   'db-ohp': DbOhp,

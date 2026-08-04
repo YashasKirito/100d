@@ -18,3 +18,21 @@ export function NotCraftedYet({ day }: { day: number }) {
     </div>
   )
 }
+
+export function LockedDay({ day, title, theme }: { day: number; title: string; theme: string }) {
+  return (
+    <div className="shell">
+      <div className="shell-top">
+        <Link to="/" className="back-link press">← Dashboard</Link>
+      </div>
+      <div className="not-crafted">
+        <div className="big tabular">{String(day).padStart(2, '0')}</div>
+        <h1>{title} — sealed until morning</h1>
+        <p>
+          Tomorrow's page is ready and waiting ({theme}). It unlocks when its day begins — no
+          peeking, no pre-checking.
+        </p>
+      </div>
+    </div>
+  )
+}

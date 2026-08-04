@@ -126,6 +126,48 @@
   padding: 6px 0;
 }
 
+/* ---- stopwatch ---- */
+.p-stopwatch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--day-border, var(--border));
+  border-radius: var(--radius-s);
+}
+.p-stopwatch-time {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  min-width: 84px;
+}
+.p-stopwatch[data-running='true'] .p-stopwatch-time {
+  color: var(--day-accent, var(--text));
+}
+.p-stopwatch-btn {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--day-accent, var(--text));
+  color: var(--bg);
+}
+.p-stopwatch-btn.log {
+  background: transparent;
+  color: var(--day-accent, var(--text));
+  border: 1.5px solid var(--day-accent, var(--border-strong));
+}
+.p-stopwatch-btn.ghost {
+  background: transparent;
+  color: var(--text-3);
+  padding: 8px 8px;
+}
+
 /* ---- water ---- */
 .p-water {
   display: flex;

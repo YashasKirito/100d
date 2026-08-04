@@ -1,0 +1,197 @@
+/* Day 2 — "nocturne": a rest day that looks like one. Deep night blue,
+   moonlit glow, slow breath. The opposite pole to Day 1's paper ledger. */
+
+.d2 {
+  --bg: #080b16;
+  --surface: #0e1322;
+  --surface-2: #161d31;
+  --border: rgba(159, 180, 255, 0.1);
+  --border-strong: rgba(159, 180, 255, 0.28);
+  --text: #e9edfa;
+  --text-2: #96a0bd;
+  --text-3: #5a6480;
+  --day-accent: #9fb4ff;
+  --day-surface: var(--surface);
+  --day-border: var(--border);
+
+  background:
+    radial-gradient(ellipse 120% 40% at 50% -5%, rgba(120, 140, 235, 0.14), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: dark;
+}
+
+.d2-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d2-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.d2-back {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+}
+.d2-daytag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--day-accent);
+  opacity: 0.9;
+}
+
+/* ---- the moon: breathing orb ---- */
+.d2-moon-wrap {
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+}
+.d2-moon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 34%, #f0f3ff, #b9c6ff 55%, #7f92e8);
+  box-shadow:
+    0 0 40px rgba(150, 170, 255, 0.35),
+    0 0 120px rgba(120, 140, 235, 0.18);
+  animation: d2-breathe 5.2s ease-in-out infinite;
+}
+@keyframes d2-breathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(150, 170, 255, 0.35), 0 0 120px rgba(120, 140, 235, 0.18); }
+  50% { transform: scale(1.06); box-shadow: 0 0 56px rgba(150, 170, 255, 0.5), 0 0 140px rgba(120, 140, 235, 0.26); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .d2-moon { animation: none; }
+}
+
+.d2-title {
+  text-align: center;
+  margin-bottom: 6px;
+}
+.d2-title h1 {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.d2-title .sub {
+  color: var(--text-2);
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.d2-note {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--text-2);
+  text-align: center;
+  max-width: 380px;
+  margin: 18px auto 36px;
+}
+.d2-note strong { color: var(--text); font-weight: 600; }
+
+/* ---- sections: floating night cards ---- */
+.d2-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.d2-card.hero {
+  border-color: rgba(159, 180, 255, 0.35);
+  box-shadow: 0 0 32px rgba(120, 140, 235, 0.1) inset, 0 0 24px rgba(120, 140, 235, 0.06);
+}
+.d2-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.d2-h h2 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.d2-h .tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-3);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.d2-p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-2);
+  margin-bottom: 10px;
+}
+.d2-p strong { color: var(--day-accent); font-weight: 600; }
+
+.d2-protocol {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0 14px;
+}
+.d2-protocol div {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 13.5px;
+  color: var(--text-2);
+}
+.d2-protocol .t {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--day-accent);
+  min-width: 64px;
+}
+
+/* meal rows */
+.d2-meal {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+.d2-meal:last-of-type { border-bottom: none; }
+.d2-meal .when {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  min-width: 70px;
+}
+.d2-meal .what { font-size: 14px; line-height: 1.45; }
+.d2-meal .protein {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--day-accent);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.d2-signoff {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 14px;
+  padding: 26px 0 4px;
+}
+
+/* stagger on entry (rare view) */
+.d2 .rise { animation-duration: 500ms; }

@@ -1,0 +1,122 @@
+/* Frozen-day summary. Deliberately unstyled in absolutes: colors, fonts and
+   mood come from the day's own theme class (.d1, .d2, …) wrapping this. */
+
+.sum {
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.sum-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 24px calc(40px + env(safe-area-inset-bottom));
+}
+
+.sum-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+.sum-back {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-3);
+}
+.sum-frozen {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--text-3);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 4px 8px;
+  transform: rotate(-2deg);
+}
+
+.sum-head {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.sum-kicker {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+.sum-pct {
+  font-size: 88px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--day-accent, var(--text));
+}
+.sum-sub {
+  font-size: 14px;
+  color: var(--text-2);
+  margin-top: 10px;
+}
+
+.sum-motivation {
+  text-align: center;
+  font-size: 16.5px;
+  line-height: 1.6;
+  font-style: italic;
+  max-width: 340px;
+  margin: 0 auto 32px;
+}
+
+.sum-block {
+  border-top: 1px solid var(--border);
+  padding: 18px 0;
+}
+.sum-block h2 {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+.sum-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 6px 0;
+  font-size: 15px;
+}
+.sum-row .v {
+  color: var(--day-accent, var(--text-2));
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.sum-row.miss .l { color: var(--text-2); text-decoration: line-through; text-decoration-thickness: 1px; }
+.sum-row.miss .v { color: var(--text-3); font-weight: 600; }
+
+.sum-notes {
+  margin: 20px 0 0;
+  padding: 16px 18px;
+  border-left: 3px solid var(--day-accent, var(--border-strong));
+  font-size: 15.5px;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--text-2);
+}
+
+.sum-foot {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--text-3);
+  font-style: italic;
+  padding-top: 36px;
+}

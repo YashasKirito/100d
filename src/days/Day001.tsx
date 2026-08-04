@@ -77,6 +77,18 @@ const HABITS = [
 // every check on this page + water as one item — powers the dashboard %
 const TOTAL_ITEMS = REHAB.length + EXERCISES_LIST.length + POSTURE.length + HABITS.length + 1
 
+export const manifest = {
+  day: DAY,
+  title: 'Baseline',
+  themeClass: 'd1',
+  sections: [
+    { title: 'Wrist rehab', items: REHAB.map((r) => ({ key: `rehab:${r.id}`, label: r.label })) },
+    { title: 'The workout', items: EXERCISES_LIST.map((e) => ({ key: `exercise:${e.id}`, label: e.name })) },
+    { title: 'The desk undo', items: POSTURE.map((p) => ({ key: `posture:${p.id}`, label: p.label })) },
+    { title: 'Habits', items: HABITS.map((h) => ({ key: `habit:${h.id}`, label: h.label })) },
+  ],
+}
+
 export default function Day001() {
   const { progress, toggleCheck, setLog, setWater, setNotes } = useDayProgress(DAY, TOTAL_ITEMS)
   const c = progress.checks
@@ -162,6 +174,7 @@ export default function Day001() {
               log={progress.logs[`reps:${e.id}`]}
               onLog={(v) => setLog(`reps:${e.id}`, v)}
               onInfo={() => setInfoId(e.id)}
+              timer={e.id === 'plank'}
             />
           ))}
         </section>

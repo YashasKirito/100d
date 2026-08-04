@@ -43,7 +43,17 @@ When the user asks for the next day's page:
    - write coaching copy in the program's voice: direct, honest, why-first
    - shared primitives live in `src/components/primitives.tsx`; theme them via
      `--day-accent` (and `--day-surface`/`--day-border`) or bring custom UI
-5. **Register it** in `src/days/registry.ts` (day, title, theme, lazy import — keep order).
+   - export a `manifest` (see `src/days/manifest.ts`): day, title, themeClass (the page's
+     root CSS class), and every checkable item grouped by section — the frozen-day
+     summary renders from it IN that theme, so the theme class must define the token
+     set (`--bg`, `--text*`, `--border*`, `--day-accent`)
+   - timed holds (plank, dead hang) pass `timer` to `ExerciseCard` — inline stopwatch
+     logs seconds into the rep log
+   - meals follow the user's real diet (see PROGRAM.md nutrition: rice + sambar base,
+     ragi mudde ×1 at night + protein main, eggs at breakfast, soya/paneer/chicken rotation)
+5. **Register it** in `src/days/registry.ts` (day, title, theme, `load` fn + lazy component
+   from the same import — keep order). Day lifecycle is automatic: past days render the
+   read-only themed summary, future days are locked until their morning, only today is live.
 6. **Verify**: `npm run build` must pass. Spot-check in `npm run dev`.
 7. **Commit and push** (`feat: day N — <title>`). Vercel deploys it; it's live by morning.
 

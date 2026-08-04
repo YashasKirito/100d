@@ -202,6 +202,27 @@ export const EXERCISES: Record<string, ExerciseInfo> = {
     cues: ['Shoulder stays down and back — don’t shrug into it', 'Breathe slow; sink slightly deeper on each exhale'],
     mistakes: ['Elbow too low (stretches the wrong fibers)', 'Twisting the spine instead of leaning the whole body'],
   },
+  'thoracic-ext': {
+    id: 'thoracic-ext',
+    name: 'Thoracic Extension (Over Chair Back)',
+    muscles: ['Mid-back mobility', 'Posture'],
+    steps: [
+      'Sit in a chair whose backrest ends at your mid-back (most office chairs work).',
+      'Interlace your fingers behind your head, elbows wide.',
+      'Arch your upper back over the top edge of the backrest — chest to the ceiling.',
+      'Hold 2–3 seconds at the top, return. Repeat gently for 60 seconds.',
+    ],
+    cues: [
+      'The bend happens over the chair edge, in your MID-back — not your lower back',
+      'Exhale as you arch back',
+      'Move a little further each rep, never forcing',
+    ],
+    mistakes: [
+      'Arching the lower back instead of the stiff upper back',
+      'Holding your breath',
+      'Bouncing hard against the chair edge',
+    ],
+  },
   'wall-angels': {
     id: 'wall-angels',
     name: 'Wall Angels',
