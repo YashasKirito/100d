@@ -30,13 +30,13 @@ function Sparkline({ points, color }: { points: [number, number][]; color: strin
   )
 }
 
-const FIELDS: { key: keyof Measurement; label: string }[] = [
-  { key: 'weightKg', label: 'Weight (kg)' },
-  { key: 'waistCm', label: 'Waist (cm)' },
-  { key: 'chestCm', label: 'Chest (cm)' },
-  { key: 'shouldersCm', label: 'Shoulders (cm)' },
-  { key: 'leftArmCm', label: 'Left arm (cm)' },
-  { key: 'rightArmCm', label: 'Right arm (cm)' },
+const FIELDS: { key: keyof Measurement; label: string; short: string; unit: string; color: string }[] = [
+  { key: 'weightKg', label: 'Weight (kg)', short: 'Weight', unit: 'kg', color: 'var(--phase-1)' },
+  { key: 'waistCm', label: 'Waist (cm)', short: 'Waist', unit: 'cm', color: 'var(--phase-3)' },
+  { key: 'chestCm', label: 'Chest (cm)', short: 'Chest', unit: 'cm', color: 'var(--phase-2)' },
+  { key: 'shouldersCm', label: 'Shoulders (cm)', short: 'Shoulders', unit: 'cm', color: 'var(--phase-4)' },
+  { key: 'leftArmCm', label: 'Left arm (cm)', short: 'L arm', unit: 'cm', color: 'var(--good)' },
+  { key: 'rightArmCm', label: 'Right arm (cm)', short: 'R arm', unit: 'cm', color: 'var(--phase-1)' },
 ]
 
 export function Measurements() {
@@ -82,8 +82,12 @@ export function Measurements() {
     setTimeout(() => setSaved(false), 1500)
   }
 
-  const weightPts = history.filter((m) => m.weightKg).map((m) => [m.day, m.weightKg!] as [number, number])
-  const waistPts = history.filter((m) => m.waistCm).map((m) => [m.day, m.waistCm!] as [number, number])
+  const series = FIELDS.map((f) => ({
+    field: f,
+    points: history
+      .filter((m) => m[f.key] != null)
+      .map((m) => [m.day, m[f.key] as number] as [number, number]),
+  }))
 
   return (
     <div className="shell measure">
@@ -118,24 +122,17 @@ export function Measurements() {
         </button>
       </div>
 
-      {weightPts.length >= 2 && (
-        <div className="chart-card card">
-          <h2>Weight</h2>
-          <div className="cap tabular">
-            {weightPts[0][1]}kg → {weightPts[weightPts.length - 1][1]}kg
+      {series
+        .filter(({ points }) => points.length >= 2)
+        .map(({ field, points }) => (
+          <div key={field.key} className="chart-card card">
+            <h2>{field.short}</h2>
+            <div className="cap tabular">
+              {points[0][1]}{field.unit} → {points[points.length - 1][1]}{field.unit}
+            </div>
+            <Sparkline points={points} color={field.color} />
           </div>
-          <Sparkline points={weightPts} color="var(--phase-1)" />
-        </div>
-      )}
-      {waistPts.length >= 2 && (
-        <div className="chart-card card">
-          <h2>Waist</h2>
-          <div className="cap tabular">
-            {waistPts[0][1]}cm → {waistPts[waistPts.length - 1][1]}cm
-          </div>
-          <Sparkline points={waistPts} color="var(--phase-3)" />
-        </div>
-      )}
+        ))}
 
       {history.length > 0 && (
         <div className="chart-card card">
@@ -146,8 +143,10 @@ export function Measurements() {
             .map((m) => (
               <div key={m.day} className="history-row tabular">
                 <span className="d">Day {m.day} · {formatDate(dateForDay(profile.startDate, m.day))}</span>
-                <span>
-                  {m.weightKg ? `${m.weightKg}kg` : '—'} · {m.waistCm ? `${m.waistCm}cm` : '—'}
+                <span className="vals">
+                  {FIELDS.filter((f) => m[f.key] != null)
+                    .map((f) => `${f.short} ${m[f.key]}${f.unit}`)
+                    .join(' · ') || '—'}
                 </span>
               </div>
             ))}
