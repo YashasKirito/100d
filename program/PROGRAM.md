@@ -8,7 +8,13 @@ Yashas — 28M, 5'11" (180cm), ~70kg, classic skinny-fat. Software engineer, wor
 
 **Baseline (Day 0):** 3 push-ups (wrist pain limits), 0 pull-ups, 20 bodyweight squats, 35s plank. Right wrist hurts in extended (palm-flat) push-up position — old badminton injury.
 
-**Equipment:** pair of fixed 5kg dumbbells, doorway pull-up bar, resistance band set (light/medium/heavy loop or tube bands).
+**Equipment (updated Day 2):** pair of fixed 5kg dumbbells (in hand). Ordered ~Day 5 arrival:
+Boldfit doorway pull-up bar + 41" loop bands (yellow 3–7kg, red 7–15kg). Black band
+(15–30kg) deferred until the assisted-pull-up rung. A 60kg/5ft barbell set (~₹3k) is the
+end-of-week-1 reward purchase if adherence holds. **No gym membership** — his call, habit
+before money: weekend "gym" sessions run at home (bodyweight/DB in Phase 1, barbell set
+from Phase 2). Until the bar/bands arrive, day pages substitute: band work → DB or towel
+variants; bar work → waits.
 
 **Goal:** body recomposition, not weight loss. Broad shoulders, visible chest, back/V-taper, defined arms, flat stomach, fixed posture. "Lean athletic guy." The scale may barely move — that's fine and expected.
 
@@ -24,6 +30,24 @@ Yashas — 28M, 5'11" (180cm), ~70kg, classic skinny-fat. Software engineer, wor
 - **Strength moves fast, size moves slow.** Expect push-ups 3→20+, pull-ups 0→3–5, and that strength curve is the leading indicator that size is coming in months 4–8.
 - **Abs by Day 100 is unlikely at ~70kg skinny-fat.** A flat stomach and top-two-abs-in-good-lighting is realistic. Full abs = a later phase.
 - **The real prize is Day 101:** you'll have the habits, the strength base, and the knowledge to keep going. This program is designed for adherence first, optimization second.
+
+**Agreed Day-100 targets (set Day 2, from baseline photos + measurements — front/side/back
+photos on file, classic skinny-fat: slim limbs, fat centralized at belly/love handles,
+mild forward-shoulder posture):**
+
+| Metric | Day 2 baseline | Day 100 realistic |
+|--------|---------------|-------------------|
+| Weight | 70 kg | ~69–71 kg (flat — recomp, ignore the scale) |
+| Waist | 84 cm | 78–81 cm |
+| Chest | 93 cm | 95–97 cm |
+| Shoulders | 107 cm | 109–112 cm |
+| Arms (L/R) | 30/31 cm | ~32–33 cm |
+
+His words for the goal: broad back, rounder muscular shoulders, bigger biceps + forearms,
+flatter core. Every session biases toward these: back width via the pull-up ladder + rows,
+shoulder roundness via laterals/pike/face pulls, arms via curls + triceps + the wrist-rehab
+work quietly building forearms, core via planks + waist shrinking. Explicitly NOT promised
+by Day 100: six-pack, dramatic V-taper — that's the months-4-8 payoff this base makes possible.
 
 **Common mistakes to avoid (all phases):**
 1. Skipping a day, then "making up" with a double session. Never. Missed = skipped, move on.
@@ -87,7 +111,10 @@ Yashas — 28M, 5'11" (180cm), ~70kg, classic skinny-fat. Software engineer, wor
 1. **Chin tucks** — 10 reps, 2s hold (forward head)
 2. **Doorway pec stretch** — 45s each side (rounded shoulders)
 3. **Band pull-aparts** — 2×15 (rear delts/upper back)
-4. **Thoracic extension over chair back or foam roller** — 60s
+4. **Thoracic extension — floor version** (updated Day 2: no suitable chair at home or
+   office) — lie back over a tightly rolled towel/blanket placed under the mid-back
+   (bra-line level), arms overhead, 60s. Alternative: hands-on-wall slides with a
+   deliberate mid-back arch.
 5. **Wall angels** — 8 slow reps
 
 Plus workday micro-habit: every time you get water at office, do 5 chin tucks + shoulder rolls.
@@ -238,6 +265,12 @@ morning, post-toilet, pre-food: weight · waist at navel · chest at nipple · s
 - Wed + (Phase 1/deloads) Sun are rest days. Rest means rest + the 10-min posture/wrist routine.
 - Two consecutive terrible-sleep days or illness → auto-downgrade the day to a walk + posture routine. The page for the next day should ask and adapt.
 - Wrist pain anywhere above 2/10 during pushing → drop to previous rung + extra rehab set. Persistent pain past Day 30 → see a physio (seriously).
+- **Left shoulder rule (added Day 2):** 2/10 joint pain appeared on overhead press —
+  a recurring pattern from his old gym days, almost certainly weak rear delts/cuff.
+  Same threshold as the wrist: above 2/10 → stop that variant. Overhead pressing stays
+  neutral-grip, pain-free range only; reassess every Push A. Face pulls + pull-aparts
+  are the medicine and are never optional on pull/posture days. If it's still
+  pinching at Day 30 → physio alongside the wrist.
 
 ## Day 101 (write this into the final week's pages)
 

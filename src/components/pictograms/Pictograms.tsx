@@ -390,7 +390,116 @@ function ThoracicExt() {
   )
 }
 
+function FloorPress() {
+  return (
+    <Svg label="floor press, dumbbells pressed up from the floor">
+      <Ground />
+      {/* body lying: head, torso, bent legs */}
+      <circle cx="42" cy="118" r="8" />
+      <line x1="52" y1="118" x2="110" y2="118" />
+      <line x1="110" y1="118" x2="130" y2="94" />
+      <line x1="130" y1="94" x2="144" y2="126" />
+      {/* arm: shoulder → elbow (floor at bottom, vertical at top) */}
+      <line x1="62" y1="116" x2="86" y2="118">
+        <A at="x2" v={[86, 64, 86]} />
+        <A at="y2" v={[118, 96, 118]} />
+      </line>
+      {/* forearm elbow → hand */}
+      <line x1="86" y1="118" x2="86" y2="96">
+        <A at="x1" v={[86, 64, 86]} />
+        <A at="y1" v={[118, 96, 118]} />
+        <A at="x2" v={[86, 64, 86]} />
+        <A at="y2" v={[96, 74, 96]} />
+      </line>
+      <rect x="79" y="88" width="14" height="8" rx="2" className="db">
+        <A at="x" v={[79, 57, 79]} />
+        <A at="y" v={[88, 66, 88]} />
+      </rect>
+    </Svg>
+  )
+}
+
+function OhTriceps() {
+  return (
+    <Svg label="overhead triceps extension, dumbbell lowered behind the head">
+      <FrontBase />
+      {/* upper arms fixed overhead, biceps by the ears */}
+      <line x1="100" y1="68" x2="90" y2="44" />
+      <line x1="100" y1="68" x2="110" y2="44" />
+      {/* forearms hinge: hands meet on the dumbbell */}
+      <line x1="90" y1="44" x2="96" y2="22">
+        <A at="x2" v={[96, 90, 96]} />
+        <A at="y2" v={[22, 52, 22]} />
+      </line>
+      <line x1="110" y1="44" x2="104" y2="22">
+        <A at="x2" v={[104, 110, 104]} />
+        <A at="y2" v={[22, 52, 22]} />
+      </line>
+      <rect x="92" y="12" width="16" height="9" rx="2" className="db">
+        <A at="y" v={[12, 48, 12]} />
+      </rect>
+    </Svg>
+  )
+}
+
+function Curls() {
+  return (
+    <Svg label="dumbbell curl, forearm hinging at the elbow">
+      <Ground />
+      {/* standing side profile */}
+      <line x1="92" y1="62" x2="92" y2="110" />
+      <circle cx="94" cy="50" r="9" />
+      <line x1="92" y1="110" x2="84" y2="126" />
+      <line x1="92" y1="110" x2="102" y2="126" />
+      {/* upper arm pinned to the side */}
+      <line x1="92" y1="66" x2="95" y2="90" />
+      {/* forearm: hanging → curled to the shoulder */}
+      <line x1="95" y1="90" x2="98" y2="114">
+        <A at="x2" v={[98, 116, 98]} />
+        <A at="y2" v={[114, 76, 114]} />
+      </line>
+      <circle cx="98" cy="114" r="7" className="db-fill">
+        <A at="cx" v={[98, 116, 98]} />
+        <A at="cy" v={[114, 76, 114]} />
+      </circle>
+    </Svg>
+  )
+}
+
+function ThoracicFloor() {
+  return (
+    <Svg label="thoracic extension lying over a rolled towel on the floor">
+      <Ground />
+      {/* the towel roll under the mid-back */}
+      <circle cx="96" cy="118" r="8" className="faint" />
+      {/* bent legs: foot → knee → hip */}
+      <line x1="150" y1="126" x2="140" y2="98" />
+      <line x1="140" y1="98" x2="118" y2="116" />
+      {/* torso arching over the roll */}
+      <line x1="118" y1="116" x2="80" y2="102">
+        <A at="x2" v={[80, 74, 80]} dur="3s" />
+        <A at="y2" v={[102, 114, 102]} dur="3s" />
+      </line>
+      <circle cx="68" cy="96" r="8">
+        <A at="cx" v={[68, 58, 68]} dur="3s" />
+        <A at="cy" v={[96, 112, 96]} dur="3s" />
+      </circle>
+      {/* elbows-to-ceiling arms hinted */}
+      <line x1="76" y1="98" x2="82" y2="80">
+        <A at="x1" v={[76, 68, 76]} dur="3s" />
+        <A at="y1" v={[98, 110, 98]} dur="3s" />
+        <A at="x2" v={[82, 70, 82]} dur="3s" />
+        <A at="y2" v={[80, 90, 80]} dur="3s" />
+      </line>
+    </Svg>
+  )
+}
+
 const PICTOGRAMS: Record<string, () => ReactNode> = {
+  'floor-press': FloorPress,
+  'oh-triceps': OhTriceps,
+  curls: Curls,
+  'thoracic-floor': ThoracicFloor,
   'thoracic-ext': ThoracicExt,
   squat: Squat,
   'incline-pushup': InclinePushup,

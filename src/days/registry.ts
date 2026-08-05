@@ -21,10 +21,12 @@ export interface DayEntry {
  */
 const load1 = () => import('./Day001')
 const load2 = () => import('./Day002')
+const load3 = () => import('./Day003')
 
 export const DAYS: DayEntry[] = [
   { day: 1, title: 'Baseline', theme: 'editorial ledger', load: load1, component: lazy(load1) },
   { day: 2, title: 'Recovery', theme: 'nocturne glow', load: load2, component: lazy(load2) },
+  { day: 3, title: 'Chest Day', theme: 'chalkboard coach', load: load3, component: lazy(load3) },
 ]
 
 export const dayEntry = (n: number) => DAYS.find((d) => d.day === n)

@@ -237,4 +237,91 @@ export const EXERCISES: Record<string, ExerciseInfo> = {
     cues: ['The game: hands and elbows never leave the wall', 'Ribs stay down — don’t arch your lower back to cheat'],
     mistakes: ['Arching the back as arms go up', 'Rushing — each rep should take ~5 seconds'],
   },
+  'floor-press': {
+    id: 'floor-press',
+    name: 'Floor Press (5kg Dumbbells, Neutral Grip)',
+    muscles: ['Chest', 'Triceps', 'Front delts'],
+    steps: [
+      'Lie on your back, knees bent, feet flat. A dumbbell in each hand, palms facing each other.',
+      'Start with upper arms resting on the floor, elbows about 45° from your body, forearms pointing at the ceiling.',
+      'Press both dumbbells up until your arms are straight above your chest.',
+      'Lower slowly until the backs of your upper arms touch the floor. Pause there one beat — no bounce. That’s one rep.',
+    ],
+    cues: [
+      'The floor is the feature: it stops the range right where a cranky shoulder stays happy',
+      'Wrists stacked straight over elbows the whole way',
+      'Press over your chest, not over your face',
+    ],
+    mistakes: [
+      'Bouncing the elbows off the floor for momentum',
+      'Elbows flaring straight out at 90°',
+      'Arching the lower back off the floor',
+    ],
+    wristNote: 'Neutral grip, wrist dead straight under the load — this is the wrist-safest press there is.',
+  },
+  'oh-triceps': {
+    id: 'oh-triceps',
+    name: 'Overhead Triceps Extension (Single 5kg, Both Hands)',
+    muscles: ['Triceps — the arm-size majority'],
+    steps: [
+      'Stand tall. Cup the top head of one dumbbell with both palms, like holding a cup upside down.',
+      'Take it overhead, arms straight, biceps near your ears.',
+      'Bend only the elbows to lower the dumbbell behind your head — slow, 2 seconds.',
+      'Extend back up to straight. Elbows stay pointing forward the whole time. That’s one rep.',
+    ],
+    cues: [
+      'Upper arms frozen, elbows close to your ears — only the forearms move',
+      'Ribs down, glutes squeezed so the lower back doesn’t arch',
+      'Left shoulder pinching above 2/10 just getting it overhead? Lie down and do the same elbow-bend as a floor skull-crusher — same triceps, zero overhead.',
+    ],
+    mistakes: [
+      'Elbows drifting wide like wings',
+      'Turning it into a press by moving the upper arms',
+      'Dropping the weight fast behind the head',
+    ],
+    wristNote: 'The weight rests in your palms with wrists neutral — grip the plate head, not the handle, if that feels straighter.',
+  },
+  curls: {
+    id: 'curls',
+    name: 'Dumbbell Curls (5kg)',
+    muscles: ['Biceps', 'Forearms'],
+    steps: [
+      'Stand tall, a dumbbell in each hand at your sides, palms facing forward.',
+      'Curl both dumbbells up toward your shoulders — upper arms pinned to your sides.',
+      'Squeeze at the top for a beat.',
+      'Lower over 3 slow seconds. That’s one rep — the way down builds as much as the way up.',
+    ],
+    cues: [
+      'Elbows glued to your ribs — they don’t travel forward',
+      'Wrist locked dead straight; the forearm is a rigid lever',
+      'Torso still: if you’re rocking, the biceps aren’t working',
+    ],
+    mistakes: [
+      'Swinging the hips to throw the weight up',
+      'Curling the wrist at the top (your wrist will complain)',
+      'Letting the dumbbells free-fall down',
+    ],
+    wristNote: 'Keep the wrist straight as a ruler. If it wants to bend late in a set, switch to hammer grip (palms facing in) — the wrist-safest curl.',
+  },
+  'thoracic-floor': {
+    id: 'thoracic-floor',
+    name: 'Thoracic Extension (Floor, Over a Rolled Towel)',
+    muscles: ['Mid-back mobility', 'Posture'],
+    steps: [
+      'Roll a bath towel or thin blanket into a tight roll about 10cm thick.',
+      'Lie on the floor with the roll horizontal under your mid-back — right at the bottom of your shoulder blades.',
+      'Support your head lightly with your hands, elbows toward the ceiling, knees bent.',
+      'Exhale and gently arch your upper back over the roll — small arcs, 2–3s each. Keep going for 60 seconds, shifting the roll up or down a notch as it eases.',
+    ],
+    cues: [
+      'The bend happens exactly where the roll is — your stiff mid-back, not your lower back',
+      'Ribs stay down; this is an unfurl, not a backbend',
+      'Exhale into every extension — the mid-back releases on the breath out',
+    ],
+    mistakes: [
+      'Roll placed under the lower back (arching the already-mobile bit)',
+      'Lifting the hips to fake a bigger arch',
+      'Holding your breath and forcing range',
+    ],
+  },
 }

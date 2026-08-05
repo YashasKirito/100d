@@ -4,7 +4,7 @@ import './shell.css'
 
 const PHASE_COPY: Record<number, string> = {
   1: 'Recondition safely. Daily wrist rehab and posture work, movement grooving, habits locked in. Intensity capped — the only goal is 14 straight days of showing up.',
-  2: 'Progressive overload begins. Beat the log every session: one more rep, one rung up the ladder. Weekend gym goes heavy on compounds.',
+  2: 'Progressive overload begins. Beat the log every session: one more rep, one rung up the ladder. Weekend heavy days run at home on the barbell set — no gym membership, his call: habit before money.',
   3: 'Peak volume. The first full pull-up lives here (test on Day 60, not before). Deload days 50–56 is planned recovery — growth happens there.',
   4: 'Push hard, then consolidate. Deload days 85–91, then a victory-lap week of tests, photos, and planning the next 100.',
 }
@@ -25,7 +25,18 @@ const RULES: [string, string][] = [
   ['Water', '3L (10 glasses)'],
   ['Sleep', '7h+, screens off by 00:30'],
   ['Wrist', 'Pain above 2/10 → previous rung + rehab'],
+  ['Shoulder', 'Same 2/10 rule on overhead pressing · face pulls + pull-aparts are the medicine'],
   ['Missed day', 'Skipped, never doubled up'],
+]
+
+/** Agreed on Day 2 from baseline photos + tape. Recomp: the scale staying
+ *  flat while these move is the plan working. */
+const TARGETS: [string, string, string][] = [
+  ['Waist', '84 cm', '78–81 cm'],
+  ['Chest', '93 cm', '95–97 cm'],
+  ['Shoulders', '107 cm', '109–112 cm'],
+  ['Arms', '30 / 31 cm', '~32–33 cm'],
+  ['Weight', '70 kg', '69–71 kg (flat, by design)'],
 ]
 
 export function Guide() {
@@ -51,6 +62,26 @@ export function Guide() {
           <p>{PHASE_COPY[p.number]}</p>
         </div>
       ))}
+
+      <div className="guide-section">
+        <h3>Day 100 targets — set Day 2, from the baseline photos</h3>
+        <p className="guide-note">
+          The goal in his words: broad back, rounder shoulders with muscle, bigger arms and
+          forearms, flatter core. Not promised by Day 100: a six-pack — that's the months-4-to-8
+          payoff this base makes possible.
+        </p>
+        <table>
+          <tbody>
+            {TARGETS.map(([what, from, to]) => (
+              <tr key={what}>
+                <td>{what}</td>
+                <td>{from}</td>
+                <td>{to}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <div className="guide-section">
         <h3>Milestones</h3>
