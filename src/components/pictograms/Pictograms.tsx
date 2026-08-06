@@ -495,7 +495,176 @@ function ThoracicFloor() {
   )
 }
 
+function DeadHang() {
+  return (
+    <Svg label="dead hang from a doorway bar">
+      {/* door frame + bar */}
+      <line x1="60" y1="8" x2="60" y2="126" className="faint" />
+      <line x1="140" y1="8" x2="140" y2="126" className="faint" />
+      <line x1="60" y1="18" x2="140" y2="18" />
+      <g>
+        {animate && (
+          <animateTransform
+            attributeName="transform"
+            type="translate"
+            values="0 0;0 3;0 0"
+            dur="3s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keyTimes="0;0.5;1"
+            keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+          />
+        )}
+        {/* arms from the bar to shoulders */}
+        <line x1="88" y1="18" x2="94" y2="48" />
+        <line x1="112" y1="18" x2="106" y2="48" />
+        <circle cx="100" cy="40" r="8" />
+        <line x1="100" y1="48" x2="100" y2="88" />
+        <line x1="100" y1="88" x2="94" y2="112" />
+        <line x1="100" y1="88" x2="106" y2="112" />
+      </g>
+    </Svg>
+  )
+}
+
+function BandRow() {
+  return (
+    <Svg label="seated band row, elbows pulling back">
+      <Ground />
+      {/* legs out front, band anchored at the feet */}
+      <line x1="86" y1="114" x2="146" y2="122" />
+      <line x1="146" y1="122" x2="150" y2="126" />
+      {/* torso tall */}
+      <line x1="86" y1="114" x2="82" y2="66" />
+      <circle cx="81" cy="55" r="8" />
+      {/* band: foot → hand (stretches as the elbow drives back) */}
+      <line x1="148" y1="120" x2="112" y2="86" className="dashed">
+        <A at="x2" v={[112, 88, 112]} />
+        <A at="y2" v={[86, 88, 86]} />
+      </line>
+      {/* arm: shoulder → elbow → hand */}
+      <line x1="84" y1="72" x2="100" y2="80">
+        <A at="x2" v={[100, 80, 100]} />
+        <A at="y2" v={[80, 88, 80]} />
+      </line>
+      <line x1="100" y1="80" x2="112" y2="86">
+        <A at="x1" v={[100, 80, 100]} />
+        <A at="y1" v={[80, 88, 80]} />
+        <A at="x2" v={[112, 88, 112]} />
+        <A at="y2" v={[86, 88, 86]} />
+      </line>
+    </Svg>
+  )
+}
+
+function DbRow() {
+  return (
+    <Svg label="single-arm dumbbell row, bench supported">
+      <Ground />
+      {/* the bench/bed */}
+      <rect x="30" y="96" width="58" height="30" rx="4" className="faint" />
+      {/* supporting arm + flat back */}
+      <line x1="52" y1="96" x2="58" y2="66" />
+      <line x1="58" y1="66" x2="126" y2="60" />
+      <circle cx="48" cy="60" r="8" />
+      {/* standing leg */}
+      <line x1="126" y1="60" x2="142" y2="126" />
+      {/* rowing arm: hangs → to the hip */}
+      <line x1="106" y1="62" x2="108" y2="92">
+        <A at="x2" v={[108, 112, 108]} />
+        <A at="y2" v={[92, 70, 92]} />
+      </line>
+      <rect x="101" y="92" width="14" height="8" rx="2" className="db">
+        <A at="x" v={[101, 105, 101]} />
+        <A at="y" v={[92, 70, 92]} />
+      </rect>
+    </Svg>
+  )
+}
+
+function FacePulls() {
+  return (
+    <Svg label="band face pull toward the forehead, elbows wide">
+      <Ground />
+      {/* anchor point at face height */}
+      <line x1="164" y1="10" x2="164" y2="126" className="faint" />
+      <circle cx="160" cy="52" r="3" className="db-fill" />
+      {/* figure */}
+      <line x1="74" y1="70" x2="74" y2="112" />
+      <circle cx="74" cy="52" r="8" />
+      <line x1="74" y1="112" x2="66" y2="126" />
+      <line x1="74" y1="112" x2="84" y2="126" />
+      {/* band: anchor → hand */}
+      <line x1="158" y1="52" x2="112" y2="56" className="dashed">
+        <A at="x2" v={[112, 92, 112]} />
+        <A at="y2" v={[56, 50, 56]} />
+      </line>
+      {/* arm: shoulder → elbow (rises + widens) → hand (to the ear) */}
+      <line x1="76" y1="66" x2="96" y2="64">
+        <A at="x2" v={[96, 94, 96]} />
+        <A at="y2" v={[64, 58, 64]} />
+      </line>
+      <line x1="96" y1="64" x2="112" y2="56">
+        <A at="x1" v={[96, 94, 96]} />
+        <A at="y1" v={[64, 58, 64]} />
+        <A at="x2" v={[112, 92, 112]} />
+        <A at="y2" v={[56, 50, 56]} />
+      </line>
+    </Svg>
+  )
+}
+
+function DeadBug() {
+  return (
+    <Svg label="dead bug, opposite arm and leg extending">
+      <Ground />
+      {/* torso lying, head left, lower back glued down */}
+      <circle cx="52" cy="118" r="8" />
+      <line x1="62" y1="120" x2="118" y2="120" />
+      {/* arm: vertical → overhead */}
+      <line x1="74" y1="120" x2="74" y2="86">
+        <A at="x2" v={[74, 48, 74]} />
+        <A at="y2" v={[86, 100, 86]} />
+      </line>
+      {/* bent leg staying up */}
+      <line x1="118" y1="120" x2="128" y2="94" />
+      <line x1="128" y1="94" x2="146" y2="100" />
+      {/* extending leg: knee bent → reaching long, hovering */}
+      <line x1="118" y1="120" x2="136" y2="106">
+        <A at="x2" v={[136, 158, 136]} />
+        <A at="y2" v={[106, 116, 106]} />
+      </line>
+    </Svg>
+  )
+}
+
+function PullAparts() {
+  return (
+    <Svg label="band pull-apart, straight arms opening to a T">
+      <FrontBase />
+      {/* band between the hands */}
+      <line x1="76" y1="66" x2="124" y2="66" className="dashed">
+        <A at="x1" v={[76, 46, 76]} />
+        <A at="x2" v={[124, 154, 124]} />
+      </line>
+      {/* straight arms from shoulders to hands */}
+      <line x1="100" y1="68" x2="76" y2="66">
+        <A at="x2" v={[76, 46, 76]} />
+      </line>
+      <line x1="100" y1="68" x2="124" y2="66">
+        <A at="x2" v={[124, 154, 124]} />
+      </line>
+    </Svg>
+  )
+}
+
 const PICTOGRAMS: Record<string, () => ReactNode> = {
+  'dead-hang': DeadHang,
+  'band-row': BandRow,
+  'db-row': DbRow,
+  'face-pulls': FacePulls,
+  'dead-bug': DeadBug,
+  'pull-aparts': PullAparts,
   'floor-press': FloorPress,
   'oh-triceps': OhTriceps,
   curls: Curls,

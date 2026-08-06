@@ -1,0 +1,140 @@
+/* Fuel tracker — themed via the day tokens like every primitive. */
+
+.p-fuel-totals {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+.p-fuel-protein .v {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--day-accent, var(--text));
+}
+.p-fuel-protein .of {
+  font-size: 13px;
+  color: var(--text-3);
+  font-weight: 600;
+}
+.p-fuel-kcal {
+  font-size: 12.5px;
+  color: var(--text-3);
+  font-weight: 600;
+}
+
+.p-fuel-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--day-surface, var(--surface-2));
+  border: 1px solid var(--day-border, var(--border));
+  overflow: hidden;
+  margin: 8px 0 14px;
+}
+.p-fuel-bar .fill {
+  height: 100%;
+  background: var(--day-accent, var(--text));
+  border-radius: 999px;
+  transition: width 300ms var(--ease-out);
+}
+.p-fuel-bar[data-done='true'] .fill { background: var(--good); }
+
+.p-fuel-meal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 11px 4px;
+  border-bottom: 1px dashed var(--day-border, var(--border));
+}
+.p-fuel-meal:last-of-type { border-bottom: none; }
+.p-fuel-meal .box {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 7px;
+  border: 1.5px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  transition: background 160ms ease, border-color 160ms ease, transform 140ms var(--ease-out);
+}
+.p-fuel-meal:active .box { transform: scale(0.88); }
+.p-fuel-meal .box svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--bg);
+  stroke-width: 3;
+  fill: none;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 220ms var(--ease-out) 40ms;
+}
+.p-fuel-meal[data-checked='true'] .box {
+  background: var(--day-accent, var(--text));
+  border-color: var(--day-accent, var(--text));
+}
+.p-fuel-meal[data-checked='true'] .box svg { stroke-dashoffset: 0; }
+.p-fuel-meal .body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  transition: opacity 180ms ease;
+}
+.p-fuel-meal[data-checked='true'] .body { opacity: 0.55; }
+.p-fuel-meal .when {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: var(--text-3);
+}
+.p-fuel-meal .what {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.p-fuel-meal .p {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--day-accent, var(--text-2));
+  white-space: nowrap;
+}
+
+.p-fuel-extras { margin-top: 14px; }
+.p-fuel-extras-h {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+.p-fuel-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.p-fuel-chip {
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--day-border, var(--border-strong));
+  background: var(--day-surface, var(--surface));
+  color: var(--text-2);
+}
+.p-fuel-chip .g { color: var(--day-accent, var(--text)); font-weight: 700; }
+.p-fuel-logged {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.p-fuel-logged-item {
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: var(--day-accent, var(--text));
+  color: var(--bg);
+}

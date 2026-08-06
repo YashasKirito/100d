@@ -1,0 +1,173 @@
+/* Day 4 — "kraft parcel": the gear arrives. Cardboard kraft, shipping-label
+   cards, packing tape, a barcode. Industrial stencil headings — nothing like
+   the ledger's serif, the nocturne, or the chalkboard. */
+
+.d4 {
+  --bg: #d4c19b;
+  --surface: #f4ecdb;
+  --surface-2: #e7dbc0;
+  --border: rgba(43, 33, 18, 0.18);
+  --border-strong: rgba(43, 33, 18, 0.45);
+  --text: #2b2112;
+  --text-2: #5d4f36;
+  --text-3: #8d7d5e;
+  --day-accent: #274690;
+  --day-surface: var(--surface-2);
+  --day-border: var(--border);
+
+  /* corrugated cardboard: faint horizontal flutes */
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(43, 33, 18, 0.028) 0px,
+      rgba(43, 33, 18, 0.028) 1px,
+      transparent 1px,
+      transparent 7px
+    ),
+    var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+.d4-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d4-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 34px;
+}
+.d4-back {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+}
+.d4-daytag {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--day-accent);
+}
+
+/* ---- title: stamp, headline, barcode ---- */
+.d4-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.d4-stamp {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #a03a2c;
+  border: 2px solid #a03a2c;
+  border-radius: 3px;
+  padding: 4px 10px;
+  transform: rotate(-2.5deg);
+  opacity: 0.75;
+  margin-bottom: 12px;
+}
+.d4-title h1 {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.d4-sub {
+  color: var(--text-2);
+  font-size: 14.5px;
+  margin-top: 2px;
+}
+.d4-barcode {
+  width: 120px;
+  height: 20px;
+  margin: 14px auto 0;
+  display: block;
+}
+.d4-barcode rect { fill: var(--text); opacity: 0.85; }
+
+.d4-note {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 20px auto 30px;
+  max-width: 400px;
+}
+.d4-note strong { color: var(--day-accent); font-weight: 700; }
+
+/* ---- sections: shipping labels taped to the box ---- */
+.d4-label {
+  position: relative;
+  background: var(--surface);
+  border: 2px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 0 rgba(43, 33, 18, 0.12);
+}
+/* packing tape across the top edge */
+.d4-label::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 108px;
+  height: 18px;
+  transform: translateX(-50%) rotate(-1.6deg);
+  background: rgba(212, 193, 155, 0.55);
+  border-left: 1px solid rgba(43, 33, 18, 0.12);
+  border-right: 1px solid rgba(43, 33, 18, 0.12);
+  pointer-events: none;
+}
+.d4-label.manifest { border-width: 3px; }
+.d4-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+  border-bottom: 2px solid var(--border-strong);
+  padding-bottom: 8px;
+}
+.d4-h h2 {
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.d4-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d4-p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-2);
+  margin: 8px 0 10px;
+}
+
+.d4-signoff {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 26px 12px 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d4-stamp { transform: none; }
+  .d4-label::before { transform: translateX(-50%); }
+}
