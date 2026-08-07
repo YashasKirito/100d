@@ -303,6 +303,51 @@ export const EXERCISES: Record<string, ExerciseInfo> = {
     ],
     wristNote: 'Keep the wrist straight as a ruler. If it wants to bend late in a set, switch to hammer grip (palms facing in) — the wrist-safest curl.',
   },
+  'pike-pushup': {
+    id: 'pike-pushup',
+    name: 'Pike Push-up (Rung 1: Knees Bent, Small Range)',
+    muscles: ['Shoulders', 'Upper chest', 'Triceps'],
+    steps: [
+      'Hands on the dumbbell handles on the floor, then walk your feet toward your hands until your hips point at the ceiling — an upside-down V.',
+      'Rung 1: keep your knees bent and the range small. This is a technique rehearsal, not a max effort.',
+      'Bend your elbows and lower the top of your head toward the space between your hands — 2 seconds down.',
+      'Press back up. Weight stays over your shoulders, not your feet.',
+    ],
+    cues: [
+      'Hips stay high the whole set — the higher the hips, the more shoulder it is',
+      'Head travels to the floor in FRONT of your hands, not between your arms',
+      'This is the overhead-press pattern with the floor as spotter — treat it with the same shoulder rule',
+    ],
+    mistakes: [
+      'Letting it become a normal push-up (hips dropping)',
+      'Flaring the elbows straight out',
+      'Pushing through a shoulder pinch — above 2/10, stop the set and tell the notes',
+    ],
+    wristNote:
+      'On the handles, always. This loads the wrist more vertically than a push-up — if it complains above 2/10, raise the hands onto a low step and shorten the range.',
+  },
+  'goblet-squat': {
+    id: 'goblet-squat',
+    name: 'Goblet Squat (5kg)',
+    muscles: ['Quads', 'Glutes', 'Core'],
+    steps: [
+      'Hold one dumbbell vertically against your chest, both palms cupping the top head — like holding a goblet.',
+      'Feet shoulder-width, toes slightly out.',
+      'Sit down between your heels over 3 seconds, elbows tracking inside your knees.',
+      'Drive up through the whole foot. The dumbbell never leaves your chest.',
+    ],
+    cues: [
+      'The weight is a counterbalance — it lets you sit deeper and more upright than a bodyweight squat',
+      'Chest proud, elbows down',
+      'Knees pushed out over the toes',
+    ],
+    mistakes: [
+      'Holding the dumbbell away from the chest (turns it into an arm exercise)',
+      'Heels lifting',
+      'Cutting depth — this variant exists to let you go deeper',
+    ],
+    wristNote: 'Cupping the head keeps the wrists neutral and stacked — no extension load.',
+  },
   'dead-hang': {
     id: 'dead-hang',
     name: 'Dead Hang (Doorway Bar)',

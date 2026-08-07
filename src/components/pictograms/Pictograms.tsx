@@ -658,7 +658,72 @@ function PullAparts() {
   )
 }
 
+function PikePushup() {
+  return (
+    <Svg label="pike push-up, hips high, head lowering between the hands">
+      <Ground />
+      {/* legs: feet planted, hips at the apex */}
+      <line x1="148" y1="126" x2="112" y2="66" />
+      {/* torso: hips → shoulders (shoulders dip toward the floor) */}
+      <line x1="112" y1="66" x2="70" y2="96">
+        <A at="x2" v={[70, 66, 70]} />
+        <A at="y2" v={[96, 108, 96]} />
+      </line>
+      {/* head below the shoulders */}
+      <circle cx="62" cy="106" r="8">
+        <A at="cx" v={[62, 58, 62]} />
+        <A at="cy" v={[106, 116, 106]} />
+      </circle>
+      {/* arm: shoulder → hand on the handle */}
+      <line x1="70" y1="96" x2="76" y2="124">
+        <A at="x1" v={[70, 66, 70]} />
+        <A at="y1" v={[96, 108, 96]} />
+      </line>
+      <rect x="69" y="120" width="14" height="7" rx="2" className="db" />
+    </Svg>
+  )
+}
+
+function GobletSquat() {
+  return (
+    <Svg label="goblet squat holding a dumbbell at the chest">
+      <Ground />
+      <line x1="95" y1="126" x2="78" y2="126" />
+      {/* shin */}
+      <line x1="95" y1="126" x2="95" y2="92">
+        <A at="x2" v={[95, 82, 95]} />
+        <A at="y2" v={[92, 96, 92]} />
+      </line>
+      {/* thigh */}
+      <line x1="95" y1="92" x2="97" y2="58">
+        <A at="x1" v={[95, 82, 95]} />
+        <A at="y1" v={[92, 96, 92]} />
+        <A at="x2" v={[97, 104, 97]} />
+        <A at="y2" v={[58, 84, 58]} />
+      </line>
+      {/* torso — more upright than a bodyweight squat */}
+      <line x1="97" y1="58" x2="99" y2="22">
+        <A at="x1" v={[97, 104, 97]} />
+        <A at="y1" v={[58, 84, 58]} />
+        <A at="x2" v={[99, 94, 99]} />
+        <A at="y2" v={[22, 48, 22]} />
+      </line>
+      <circle cx="100" cy="13" r="8">
+        <A at="cx" v={[100, 93, 100]} />
+        <A at="cy" v={[13, 39, 13]} />
+      </circle>
+      {/* the goblet: dumbbell held at the chest, riding with the torso */}
+      <circle cx="112" cy="34" r="7" className="db-fill">
+        <A at="cx" v={[112, 108, 112]} />
+        <A at="cy" v={[34, 60, 34]} />
+      </circle>
+    </Svg>
+  )
+}
+
 const PICTOGRAMS: Record<string, () => ReactNode> = {
+  'pike-pushup': PikePushup,
+  'goblet-squat': GobletSquat,
   'dead-hang': DeadHang,
   'band-row': BandRow,
   'db-row': DbRow,

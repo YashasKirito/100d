@@ -1,0 +1,154 @@
+/* Day 5 — "retro sport": Saturday-meet poster. Warm amber field, ink-black
+   italic display type, a giant jersey number, diagonal track stripes.
+   Sunshine energy for the first holiday session. */
+
+.d5 {
+  --bg: #e8a93b;
+  --surface: #f7edd8;
+  --surface-2: #efdfc0;
+  --border: rgba(26, 20, 12, 0.16);
+  --border-strong: rgba(26, 20, 12, 0.5);
+  --text: #1a140c;
+  --text-2: #55452c;
+  --text-3: #85703f;
+  --day-accent: #1a140c;
+  --day-surface: var(--surface-2);
+  --day-border: var(--border);
+
+  background:
+    radial-gradient(ellipse 120% 50% at 50% -10%, rgba(255, 236, 190, 0.55), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+.d5-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d5-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+.d5-back {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+}
+.d5-daytag {
+  font-size: 12px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.16em;
+  color: var(--text);
+}
+
+/* ---- title: jersey number + italic display ---- */
+.d5-title {
+  text-align: center;
+  margin-bottom: 8px;
+}
+.d5-jersey {
+  font-size: 96px;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--text);
+  opacity: 0.35;
+  user-select: none;
+}
+.d5-title h1 {
+  font-size: 44px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  text-transform: uppercase;
+  margin-top: -30px;
+}
+.d5-stripes {
+  height: 12px;
+  max-width: 240px;
+  margin: 14px auto 10px;
+  background: repeating-linear-gradient(
+    -55deg,
+    var(--text) 0 10px,
+    transparent 10px 20px
+  );
+  opacity: 0.85;
+}
+.d5-sub {
+  color: var(--text-2);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.d5-note {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 20px auto 30px;
+  max-width: 400px;
+}
+.d5-note strong { color: var(--text); font-weight: 800; }
+
+/* ---- sections: team-sheet cards, thick left rail ---- */
+.d5-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border-strong);
+  border-left-width: 6px;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.d5-card.meet { border-left-width: 10px; }
+.d5-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.d5-h h2 {
+  font-size: 17px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.d5-tag {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d5-p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-2);
+  margin: 6px 0 10px;
+}
+.d5-p strong { color: var(--text); font-weight: 800; }
+
+.d5-signoff {
+  text-align: center;
+  color: var(--text-2);
+  font-size: 13.5px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 26px 12px 4px;
+}

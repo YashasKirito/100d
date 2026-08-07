@@ -23,12 +23,14 @@ const load1 = () => import('./Day001')
 const load2 = () => import('./Day002')
 const load3 = () => import('./Day003')
 const load4 = () => import('./Day004')
+const load5 = () => import('./Day005')
 
 export const DAYS: DayEntry[] = [
   { day: 1, title: 'Baseline', theme: 'editorial ledger', load: load1, component: lazy(load1) },
   { day: 2, title: 'Recovery', theme: 'nocturne glow', load: load2, component: lazy(load2) },
   { day: 3, title: 'Chest Day', theme: 'chalkboard coach', load: load3, component: lazy(load3) },
   { day: 4, title: 'Delivery Day', theme: 'kraft parcel', load: load4, component: lazy(load4) },
+  { day: 5, title: 'Saturday Session', theme: 'retro sport', load: load5, component: lazy(load5) },
 ]
 
 export const dayEntry = (n: number) => DAYS.find((d) => d.day === n)
