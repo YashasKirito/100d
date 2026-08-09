@@ -1,0 +1,155 @@
+/* Day 6 — "recipe card": Sunday in the kitchen. Warm ruled index-card paper,
+   handwritten headings, herb green + a tomato-red top rule. A rest day that
+   smells like batch cooking, not like a gym. */
+
+.d6 {
+  --bg: #faf5ea;
+  --surface: #fffdf6;
+  --surface-2: #f3ecdb;
+  --border: rgba(62, 52, 38, 0.14);
+  --border-strong: rgba(62, 52, 38, 0.34);
+  --text: #35301f;
+  --text-2: #6d6449;
+  --text-3: #9a9071;
+  --day-accent: #4a7c3f;
+  --day-surface: var(--surface-2);
+  --day-border: var(--border);
+
+  /* faint ruled lines, like an index card */
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 27px,
+      rgba(105, 140, 190, 0.09) 27px,
+      rgba(105, 140, 190, 0.09) 28px
+    ),
+    var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+.d6 h1,
+.d6 h2,
+.d6-daytag,
+.d6-signoff {
+  font-family: 'Noteworthy', 'Bradley Hand', 'Marker Felt', 'Segoe Print', cursive;
+}
+
+.d6-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d6-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.d6-back {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+}
+.d6-daytag {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--day-accent);
+}
+
+/* ---- title: index-card double red rule ---- */
+.d6-title {
+  text-align: center;
+  margin-bottom: 6px;
+}
+.d6-card-rule {
+  height: 0;
+  border-top: 2px solid rgba(217, 96, 79, 0.55);
+  border-bottom: 1px solid rgba(217, 96, 79, 0.35);
+  padding-top: 2px;
+  max-width: 300px;
+  margin: 0 auto 18px;
+}
+.d6-title h1 {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transform: rotate(-0.5deg);
+}
+.d6-sub {
+  color: var(--text-2);
+  font-size: 14.5px;
+  margin-top: 4px;
+}
+
+.d6-note {
+  font-size: 15px;
+  line-height: 1.68;
+  color: var(--text-2);
+  margin: 18px auto 30px;
+  max-width: 400px;
+}
+.d6-note strong { color: var(--day-accent); font-weight: 700; }
+
+/* ---- cards ---- */
+.d6-card {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 0 rgba(62, 52, 38, 0.08);
+}
+.d6-card.prep {
+  border-color: var(--day-accent);
+  border-width: 1.5px;
+  box-shadow: 0 2px 0 rgba(74, 124, 63, 0.18);
+}
+.d6-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+  border-bottom: 1px dashed var(--border-strong);
+  padding-bottom: 7px;
+}
+.d6-h h2 {
+  font-size: 19px;
+  font-weight: 700;
+  transform: rotate(-0.3deg);
+}
+.d6-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d6-p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-2);
+  margin: 8px 0 10px;
+}
+.d6-p strong { color: var(--day-accent); font-weight: 700; }
+
+.d6-signoff {
+  text-align: center;
+  color: var(--text-2);
+  font-size: 15px;
+  padding: 26px 12px 4px;
+  transform: rotate(-0.4deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d6-title h1, .d6-h h2, .d6-signoff { transform: none; }
+}
