@@ -760,7 +760,44 @@ function BandOhp() {
   )
 }
 
+function ScapPulls() {
+  return (
+    <Svg label="scapular pull: hanging body rises slightly, arms stay straight">
+      {/* door frame + bar */}
+      <line x1="60" y1="8" x2="60" y2="126" className="faint" />
+      <line x1="140" y1="8" x2="140" y2="126" className="faint" />
+      <line x1="60" y1="18" x2="140" y2="18" />
+      {/* hands fixed on the bar */}
+      <circle cx="88" cy="18" r="3" className="db-fill" />
+      <circle cx="112" cy="18" r="3" className="db-fill" />
+      {/* straight arms to shoulders; body rises as the blades pull down */}
+      <line x1="88" y1="18" x2="94" y2="50">
+        <A at="y2" v={[50, 42, 50]} />
+      </line>
+      <line x1="112" y1="18" x2="106" y2="50">
+        <A at="y2" v={[50, 42, 50]} />
+      </line>
+      <circle cx="100" cy="42" r="8">
+        <A at="cy" v={[42, 34, 42]} />
+      </circle>
+      <line x1="100" y1="50" x2="100" y2="90">
+        <A at="y1" v={[50, 42, 50]} />
+        <A at="y2" v={[90, 82, 90]} />
+      </line>
+      <line x1="100" y1="90" x2="94" y2="114">
+        <A at="y1" v={[90, 82, 90]} />
+        <A at="y2" v={[114, 106, 114]} />
+      </line>
+      <line x1="100" y1="90" x2="106" y2="114">
+        <A at="y1" v={[90, 82, 90]} />
+        <A at="y2" v={[114, 106, 114]} />
+      </line>
+    </Svg>
+  )
+}
+
 const PICTOGRAMS: Record<string, () => ReactNode> = {
+  'scap-pulls': ScapPulls,
   'band-ohp': BandOhp,
   'pike-pushup': PikePushup,
   'goblet-squat': GobletSquat,

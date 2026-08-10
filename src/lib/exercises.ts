@@ -370,6 +370,28 @@ export const EXERCISES: Record<string, ExerciseInfo> = {
     ],
     wristNote: 'Cupping the head keeps the wrists neutral and stacked — no extension load.',
   },
+  'scap-pulls': {
+    id: 'scap-pulls',
+    name: 'Scapular Pulls (Doorway Bar)',
+    muscles: ['Lower traps', 'Lats — the pull-up starter muscles'],
+    steps: [
+      'Hang from the bar exactly like a dead hang — straight arms, thumbs wrapped.',
+      'Without bending your elbows AT ALL, pull your shoulder blades down and back — your body rises a few centimetres.',
+      'Hold the top for 1–2 seconds. Your neck should feel longer, ears away from shoulders.',
+      'Release slowly back into the full hang. That’s one rep.',
+    ],
+    cues: [
+      'The movement is tiny and lives entirely in the shoulder blades',
+      'Think "put your shoulder blades in your back pockets"',
+      'If your elbows bend, you’re doing a pull-up — too soon, go smaller',
+    ],
+    mistakes: [
+      'Bending the arms to fake height',
+      'Kipping or swinging for momentum',
+      'Rushing the release — the lower is half the rep',
+    ],
+    wristNote: 'Same neutral hanging load as the dead hang — wrist-friendly by design.',
+  },
   'dead-hang': {
     id: 'dead-hang',
     name: 'Dead Hang (Doorway Bar)',

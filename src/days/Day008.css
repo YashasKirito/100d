@@ -1,0 +1,136 @@
+/* Day 8 — "Swiss grid": International Style poster. Cold white field,
+   Helvetica, cobalt accent, hairline rules, numbered sections. The ascent,
+   typeset with total order. */
+
+.d8 {
+  --bg: #f4f4f0;
+  --surface: #fbfbf8;
+  --surface-2: #eaeae3;
+  --border: rgba(17, 17, 17, 0.14);
+  --border-strong: rgba(17, 17, 17, 0.55);
+  --text: #111111;
+  --text-2: #4c4c48;
+  --text-3: #8a8a82;
+  --day-accent: #2255ee;
+  --day-surface: var(--surface-2);
+  --day-border: var(--border);
+
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
+  color-scheme: light;
+}
+
+.d8-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d8-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 12px;
+}
+.d8-back {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+}
+.d8-daytag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--day-accent);
+}
+
+/* ---- title ---- */
+.d8-title { margin-bottom: 10px; }
+.d8-index {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+.d8-title h1 {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+.d8-rule {
+  height: 6px;
+  background: var(--day-accent);
+  max-width: 88px;
+  margin: 16px 0 14px;
+}
+.d8-sub {
+  color: var(--text-2);
+  font-size: 14.5px;
+  line-height: 1.55;
+  max-width: 380px;
+}
+
+.d8-note {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 22px 0 34px;
+  max-width: 400px;
+}
+.d8-note strong { color: var(--day-accent); font-weight: 700; }
+
+/* ---- sections: hairline grid, big index numerals ---- */
+.d8-sec {
+  border-top: 1px solid var(--border-strong);
+  padding: 14px 0 18px;
+  margin-bottom: 8px;
+}
+.d8-h {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.d8-h .no {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--day-accent);
+  letter-spacing: 0.04em;
+  min-width: 26px;
+}
+.d8-h h2 {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+}
+.d8-why {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d8-p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin: 4px 0 10px;
+}
+
+.d8-signoff {
+  border-top: 1px solid var(--border-strong);
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 18px 0 4px;
+}
