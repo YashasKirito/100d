@@ -721,7 +721,47 @@ function GobletSquat() {
   )
 }
 
+function BandOhp() {
+  return (
+    <Svg label="overhead press with a band anchored under the feet">
+      <FrontBase />
+      {/* band: from under the feet up to each hand */}
+      <line x1="94" y1="124" x2="82" y2="60" className="dashed">
+        <A at="x2" v={[82, 90, 82]} />
+        <A at="y2" v={[60, 26, 60]} />
+      </line>
+      <line x1="106" y1="124" x2="118" y2="60" className="dashed">
+        <A at="x2" v={[118, 110, 118]} />
+        <A at="y2" v={[60, 26, 60]} />
+      </line>
+      {/* left arm: shoulder → elbow → hand */}
+      <line x1="100" y1="68" x2="84" y2="76">
+        <A at="x2" v={[84, 90, 84]} />
+        <A at="y2" v={[76, 46, 76]} />
+      </line>
+      <line x1="84" y1="76" x2="82" y2="60">
+        <A at="x1" v={[84, 90, 84]} />
+        <A at="y1" v={[76, 46, 76]} />
+        <A at="x2" v={[82, 90, 82]} />
+        <A at="y2" v={[60, 26, 60]} />
+      </line>
+      {/* right arm */}
+      <line x1="100" y1="68" x2="116" y2="76">
+        <A at="x2" v={[116, 110, 116]} />
+        <A at="y2" v={[76, 46, 76]} />
+      </line>
+      <line x1="116" y1="76" x2="118" y2="60">
+        <A at="x1" v={[116, 110, 116]} />
+        <A at="y1" v={[76, 46, 76]} />
+        <A at="x2" v={[118, 110, 118]} />
+        <A at="y2" v={[60, 26, 60]} />
+      </line>
+    </Svg>
+  )
+}
+
 const PICTOGRAMS: Record<string, () => ReactNode> = {
+  'band-ohp': BandOhp,
   'pike-pushup': PikePushup,
   'goblet-squat': GobletSquat,
   'dead-hang': DeadHang,

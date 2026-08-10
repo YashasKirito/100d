@@ -1,0 +1,148 @@
+/* Day 7 — "neon terminal": Monday reboot as a phosphor-green CRT. Boot log,
+   $ prompts, blinking cursor, faint scanlines. The shoulder diagnostic day
+   rendered as what it is: diagnostics. */
+
+.d7 {
+  --bg: #050a06;
+  --surface: #0a120c;
+  --surface-2: #101b12;
+  --border: rgba(72, 240, 130, 0.16);
+  --border-strong: rgba(72, 240, 130, 0.42);
+  --text: #cdf2cf;
+  --text-2: #86bd90;
+  --text-3: #4e7a58;
+  --day-accent: #3dff7c;
+  --day-surface: var(--surface-2);
+  --day-border: var(--border);
+
+  /* CRT scanlines, very faint */
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(72, 240, 130, 0.025) 0px,
+      rgba(72, 240, 130, 0.025) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    radial-gradient(ellipse 120% 60% at 50% 0%, rgba(30, 90, 45, 0.25), transparent 65%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', monospace;
+  color-scheme: dark;
+}
+
+.d7-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 20px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d7-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.d7-back {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+}
+.d7-daytag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--day-accent);
+}
+
+/* ---- title: boot log + headline + cursor ---- */
+.d7-boot {
+  font-size: 11.5px;
+  line-height: 1.8;
+  color: var(--text-3);
+  margin-bottom: 16px;
+  overflow-wrap: break-word;
+}
+.d7-title h1 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--day-accent);
+  text-shadow: 0 0 18px rgba(61, 255, 124, 0.35);
+}
+.d7-cursor {
+  animation: d7-blink 1.1s steps(1) infinite;
+}
+@keyframes d7-blink {
+  50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .d7-cursor { animation: none; }
+}
+.d7-sub {
+  color: var(--text-2);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.d7-note {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-2);
+  margin: 20px 0 28px;
+}
+.d7-note strong { color: var(--day-accent); font-weight: 700; }
+
+/* ---- cards: terminal panels ---- */
+.d7-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 14px;
+}
+.d7-card.main {
+  border-color: var(--border-strong);
+  box-shadow: 0 0 24px rgba(61, 255, 124, 0.07);
+}
+.d7-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+.d7-h h2 {
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--day-accent);
+}
+.d7-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d7-p {
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 8px 0 10px;
+}
+.d7-p strong { color: var(--text); font-weight: 700; }
+
+.d7-signoff {
+  text-align: left;
+  color: var(--text-3);
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 24px 4px 4px;
+}

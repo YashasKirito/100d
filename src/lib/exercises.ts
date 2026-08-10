@@ -303,6 +303,28 @@ export const EXERCISES: Record<string, ExerciseInfo> = {
     ],
     wristNote: 'Keep the wrist straight as a ruler. If it wants to bend late in a set, switch to hammer grip (palms facing in) — the wrist-safest curl.',
   },
+  'band-ohp': {
+    id: 'band-ohp',
+    name: 'Band Overhead Press (Yellow Band)',
+    muscles: ['Shoulders', 'Triceps'],
+    steps: [
+      'Stand on the middle of the yellow band, feet hip-width.',
+      'Hold an end in each hand at shoulder height, palms facing each other.',
+      'Press both hands straight up until your arms are locked out overhead.',
+      'Lower under control — the band pulls faster than gravity, don’t let it win. That’s one rep.',
+    ],
+    cues: [
+      'This is the overhead press coming back from suspension — yellow band only, light on purpose',
+      'The band gets heavier as you go up, so the bottom is easy and the lockout is the work',
+      'Ribs down, glutes tight, wrists neutral',
+    ],
+    mistakes: [
+      'Grading yourself on effort — today is pattern rehearsal, not load',
+      'Arching the lower back at lockout',
+      'Any left-shoulder pinch above 2/10 and the set is over — write the number down',
+    ],
+    wristNote: 'Neutral grip on the band, wrist straight — the band wants to fold your wrist back at the top; don’t let it.',
+  },
   'pike-pushup': {
     id: 'pike-pushup',
     name: 'Pike Push-up (Rung 1: Knees Bent, Small Range)',
