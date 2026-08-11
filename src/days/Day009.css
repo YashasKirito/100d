@@ -1,0 +1,174 @@
+/* Day 9 — "dusk gradient": rest day as the sky between day and night.
+   Peach → mauve → deep plum, soft translucent cards, italic serif calm.
+   The warm counterpart to Day 2's cold nocturne. */
+
+.d9 {
+  --bg: #2a1f33;
+  --surface: rgba(255, 240, 230, 0.07);
+  --surface-2: rgba(255, 240, 230, 0.12);
+  --border: rgba(255, 220, 200, 0.14);
+  --border-strong: rgba(255, 220, 200, 0.32);
+  --text: #f7ece4;
+  --text-2: #c9b3ad;
+  --text-3: #8d7a7e;
+  --day-accent: #f2a679;
+  --day-surface: var(--surface);
+  --day-border: var(--border);
+
+  background:
+    linear-gradient(
+      180deg,
+      #f2a679 0%,
+      #d98a8c 16%,
+      #a06a90 34%,
+      #5d4470 55%,
+      #2a1f33 80%
+    )
+    fixed,
+    var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: dark;
+}
+
+.d9 h1,
+.d9 h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.d9-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d9-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 44px;
+}
+.d9-back {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(42, 31, 51, 0.75);
+}
+.d9-daytag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(42, 31, 51, 0.85);
+}
+
+/* ---- title ---- */
+.d9-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.d9-title h1 {
+  font-size: 46px;
+  letter-spacing: -0.01em;
+  color: #37263f;
+  text-shadow: 0 1px 0 rgba(255, 240, 220, 0.25);
+}
+.d9-sub {
+  color: rgba(55, 38, 63, 0.85);
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.d9-note {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-2);
+  margin: 44px auto 30px;
+  max-width: 390px;
+  text-align: center;
+}
+.d9-note strong { color: var(--day-accent); font-weight: 700; }
+
+/* ---- cards: translucent dusk glass ---- */
+.d9-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 17px;
+  margin-bottom: 14px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.d9-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.d9-h h2 {
+  font-size: 19px;
+  letter-spacing: 0;
+}
+.d9-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d9-p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin: 6px 0 12px;
+}
+.d9-p strong { color: var(--day-accent); font-weight: 700; }
+
+/* auto protein-goal status row */
+.d9-goal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1.5px dashed var(--border-strong);
+  font-size: 13.5px;
+  color: var(--text-2);
+  transition: border-color 300ms ease, color 300ms ease;
+}
+.d9-goal .tick {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 7px;
+  border: 1.5px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  transition: background 300ms ease, border-color 300ms ease;
+}
+.d9-goal[data-hit='true'] {
+  border-color: var(--good);
+  color: var(--text);
+}
+.d9-goal[data-hit='true'] .tick {
+  background: var(--good);
+  border-color: var(--good);
+  color: #10241a;
+}
+
+.d9-signoff {
+  font-family: Georgia, serif;
+  font-style: italic;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 14.5px;
+  padding: 28px 12px 4px;
+}
