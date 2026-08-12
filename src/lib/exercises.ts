@@ -414,6 +414,28 @@ export const EXERCISES: Record<string, ExerciseInfo> = {
     ],
     wristNote: 'Hangs load the wrist in neutral — generally the friendliest grip work there is, and quietly the best forearm builder in the program.',
   },
+  'band-pushdown': {
+    id: 'band-pushdown',
+    name: 'Band Triceps Pushdown',
+    muscles: ['Triceps'],
+    steps: [
+      'Loop the band over the mounted pull-up bar (or a door hinge above head height).',
+      'Hold the hanging ends, elbows pinned to your ribs, forearms up.',
+      'Push your hands straight down until your arms are fully locked out.',
+      'Squeeze one beat at the bottom, then let the forearms rise slowly. Only the elbows hinge.',
+    ],
+    cues: [
+      'Elbows are bolted to your sides — if they drift forward it becomes a press',
+      'Full lockout every rep; the squeeze at the bottom is the exercise',
+      'Step back slightly if the band slacks off at the top',
+    ],
+    mistakes: [
+      'Leaning over the band and pushing with bodyweight',
+      'Elbows flaring or drifting',
+      'Half lockouts',
+    ],
+    wristNote: 'Wrists stay straight as extensions of the forearm — push through the palm heel, don’t curl the wrist down at lockout.',
+  },
   'band-row': {
     id: 'band-row',
     name: 'Band Row (Seated, Red Band)',

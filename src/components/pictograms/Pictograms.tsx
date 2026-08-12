@@ -796,7 +796,35 @@ function ScapPulls() {
   )
 }
 
+function BandPushdown() {
+  return (
+    <Svg label="band triceps pushdown from an overhead anchor">
+      <Ground />
+      {/* overhead bar anchor */}
+      <line x1="70" y1="16" x2="150" y2="16" className="faint" />
+      {/* figure, side profile */}
+      <line x1="90" y1="60" x2="90" y2="110" />
+      <circle cx="92" cy="48" r="8" />
+      <line x1="90" y1="110" x2="82" y2="126" />
+      <line x1="90" y1="110" x2="100" y2="126" />
+      {/* upper arm pinned to the ribs */}
+      <line x1="90" y1="66" x2="98" y2="84" />
+      {/* band from the bar to the hand */}
+      <line x1="110" y1="16" x2="112" y2="66" className="dashed">
+        <A at="x2" v={[112, 116, 112]} />
+        <A at="y2" v={[66, 102, 66]} />
+      </line>
+      {/* forearm hinging down to lockout */}
+      <line x1="98" y1="84" x2="112" y2="66">
+        <A at="x2" v={[112, 116, 112]} />
+        <A at="y2" v={[66, 102, 66]} />
+      </line>
+    </Svg>
+  )
+}
+
 const PICTOGRAMS: Record<string, () => ReactNode> = {
+  'band-pushdown': BandPushdown,
   'scap-pulls': ScapPulls,
   'band-ohp': BandOhp,
   'pike-pushup': PikePushup,

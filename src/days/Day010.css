@@ -1,0 +1,192 @@
+/* Day 10 — "comic pop": issue #10, double digits. Halftone dots, thick ink
+   panels with offset shadows, a starburst 10%, CMYK energy. Chest day as an
+   action page. */
+
+.d10 {
+  --bg: #f6f1e4;
+  --surface: #fffdf4;
+  --surface-2: #f0e8d2;
+  --border: rgba(20, 16, 12, 0.2);
+  --border-strong: #14100c;
+  --text: #14100c;
+  --text-2: #4e463c;
+  --text-3: #877c6c;
+  --day-accent: #e0245e;
+  --day-surface: var(--surface-2);
+  --day-border: var(--border);
+
+  /* halftone dot field */
+  background:
+    radial-gradient(rgba(20, 16, 12, 0.07) 1px, transparent 1.5px),
+    var(--bg);
+  background-size: 9px 9px;
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+.d10-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d10-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.d10-back {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-2);
+}
+.d10-daytag {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--day-accent);
+  transform: rotate(-1.5deg);
+}
+
+/* ---- title: starburst + stacked headline ---- */
+.d10-title {
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+.d10-burst {
+  display: inline-grid;
+  place-items: center;
+  width: 74px;
+  height: 74px;
+  font-size: 20px;
+  font-weight: 900;
+  color: #fffdf4;
+  background: var(--day-accent);
+  border: 3px solid var(--border-strong);
+  border-radius: 50%;
+  box-shadow: 4px 4px 0 var(--border-strong);
+  transform: rotate(-8deg);
+  margin-bottom: 10px;
+}
+.d10-title h1 {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1.5px var(--border-strong);
+  text-shadow: 4px 4px 0 rgba(224, 36, 94, 0.35);
+}
+.d10-sub {
+  color: var(--text-2);
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.d10-note {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 20px auto 30px;
+  max-width: 400px;
+}
+.d10-note strong { color: var(--day-accent); font-weight: 800; }
+
+/* ---- panels: comic frames with offset ink shadows ---- */
+.d10-panel {
+  background: var(--surface);
+  border: 3px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 0 rgba(20, 16, 12, 0.85);
+}
+.d10-panel.main {
+  box-shadow: 5px 5px 0 var(--day-accent), 5px 5px 0 3px var(--border-strong);
+}
+.d10-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+  border-bottom: 2px solid var(--border-strong);
+  padding-bottom: 7px;
+}
+.d10-h h2 {
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transform: rotate(-0.5deg);
+}
+.d10-tag {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--day-accent);
+  white-space: nowrap;
+  transform: rotate(-1deg);
+}
+.d10-p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-2);
+  margin: 8px 0 10px;
+}
+
+/* auto protein-goal status row */
+.d10-goal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border: 2px dashed var(--border-strong);
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+.d10-goal .tick {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 6px;
+  border: 2px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 900;
+}
+.d10-goal[data-hit='true'] {
+  border-color: var(--good);
+  color: var(--text);
+}
+.d10-goal[data-hit='true'] .tick {
+  background: var(--good);
+  border-color: var(--good);
+  color: #fffdf4;
+}
+
+.d10-signoff {
+  text-align: center;
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 26px 12px 4px;
+  transform: rotate(-0.6deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d10-burst, .d10-daytag, .d10-h h2, .d10-tag, .d10-signoff { transform: none; }
+}
