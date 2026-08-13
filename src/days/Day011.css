@@ -1,0 +1,210 @@
+/* Day 11 — "blueprint": cyanotype drafting sheet. Prussian blue field, white
+   linework, grid paper, title plate and dimension lines. Pull day drawn as
+   the rear elevation of the V-taper project. */
+
+.d11 {
+  --bg: #123c6b;
+  --surface: rgba(232, 241, 251, 0.05);
+  --surface-2: rgba(232, 241, 251, 0.1);
+  --border: rgba(232, 241, 251, 0.22);
+  --border-strong: rgba(232, 241, 251, 0.55);
+  --text: #eaf2fc;
+  --text-2: #b3c8e0;
+  --text-3: #7995b5;
+  --day-accent: #ffffff;
+  --day-surface: var(--surface);
+  --day-border: var(--border);
+
+  /* drafting grid */
+  background:
+    linear-gradient(rgba(232, 241, 251, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 241, 251, 0.05) 1px, transparent 1px),
+    var(--bg);
+  background-size: 24px 24px, 24px 24px, auto;
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: dark;
+}
+
+.d11-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d11-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.d11-back {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+}
+.d11-daytag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  padding: 4px 10px;
+}
+
+/* ---- title block: drawing plate ---- */
+.d11-title { margin-bottom: 12px; }
+.d11-plate {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--border-strong);
+  border-bottom: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-3);
+  padding: 6px 10px;
+  max-width: 340px;
+}
+.d11-title h1 {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  border: 1px solid var(--border-strong);
+  padding: 12px 14px 14px;
+  max-width: 340px;
+}
+.d11-dim {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  max-width: 380px;
+}
+.d11-dim .line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-strong);
+  position: relative;
+}
+.d11-dim .line::before,
+.d11-dim .line::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 7px;
+  background: var(--border-strong);
+}
+.d11-dim .line::before { left: 0; }
+.d11-dim .line::after { right: 0; }
+.d11-dim .label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-2);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.d11-note {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 22px 0 30px;
+  max-width: 400px;
+}
+.d11-note strong { color: var(--day-accent); font-weight: 700; }
+
+/* ---- sheets: bordered drawing panels with corner ticks ---- */
+.d11-sheet {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.d11-sheet::before,
+.d11-sheet::after {
+  content: '+';
+  position: absolute;
+  font-size: 11px;
+  color: var(--border-strong);
+  line-height: 1;
+}
+.d11-sheet::before { top: -6px; left: -5px; }
+.d11-sheet::after { bottom: -6px; right: -5px; }
+.d11-sheet.main { border-color: var(--border-strong); }
+.d11-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+.d11-h h2 {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.d11-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d11-p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin: 8px 0 10px;
+}
+
+/* auto protein-goal status row */
+.d11-goal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border: 1px dashed var(--border-strong);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+.d11-goal .tick {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border: 1px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+.d11-goal[data-hit='true'] {
+  border-color: var(--good);
+  color: var(--text);
+}
+.d11-goal[data-hit='true'] .tick {
+  background: var(--good);
+  border-color: var(--good);
+  color: #0d2b4f;
+}
+
+.d11-signoff {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.8;
+  padding: 26px 12px 4px;
+}

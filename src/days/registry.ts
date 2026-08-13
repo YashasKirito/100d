@@ -29,6 +29,7 @@ const load7 = () => import('./Day007')
 const load8 = () => import('./Day008')
 const load9 = () => import('./Day009')
 const load10 = () => import('./Day010')
+const load11 = () => import('./Day011')
 
 export const DAYS: DayEntry[] = [
   { day: 1, title: 'Baseline', theme: 'editorial ledger', load: load1, component: lazy(load1) },
@@ -41,6 +42,7 @@ export const DAYS: DayEntry[] = [
   { day: 8, title: 'The Ascent', theme: 'swiss grid', load: load8, component: lazy(load8) },
   { day: 9, title: 'Stillness', theme: 'dusk gradient', load: load9, component: lazy(load9) },
   { day: 10, title: 'Double Digits', theme: 'comic pop', load: load10, component: lazy(load10) },
+  { day: 11, title: 'The Back Works', theme: 'blueprint', load: load11, component: lazy(load11) },
 ]
 
 export const dayEntry = (n: number) => DAYS.find((d) => d.day === n)
