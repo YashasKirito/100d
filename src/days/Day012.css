@@ -1,0 +1,234 @@
+/* Day 12 — "brutalist poster": Saturday's home-gym session billed as a
+   one-night-only show. Warm paper, heavy ink slabs, signal-red accent,
+   hard offset shadows, numbered events. Zero border radius, zero apology. */
+
+.d12 {
+  --bg: #efeae1;
+  --ink: #171310;
+  --surface: #f8f5ee;
+  --surface-2: #e6dfd2;
+  --border: rgba(23, 19, 16, 0.22);
+  --border-strong: #171310;
+  --text: #171310;
+  --text-2: #4d463e;
+  --text-3: #8b8378;
+  --day-accent: #d93a1c;
+  --day-surface: var(--surface);
+  --day-border: var(--ink);
+
+  /* square everything the primitives round */
+  --radius-s: 0px;
+  --radius-m: 0px;
+  --radius-l: 0px;
+
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+.d12-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* condensed display stack for the poster type */
+.d12 .d12-poster,
+.d12 .d12-daytag,
+.d12 .d12-signoff,
+.d12 .d12-h h2 {
+  font-family: 'Avenir Next Condensed', 'Roboto Condensed', 'Arial Narrow', system-ui, sans-serif;
+}
+
+/* ---- header ---- */
+.d12-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+.d12-back {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+}
+.d12-daytag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 5px 10px;
+}
+
+/* ---- the poster masthead ---- */
+.d12-poster {
+  border: 3px solid var(--ink);
+  background: var(--surface);
+  box-shadow: 6px 6px 0 var(--ink);
+  margin-bottom: 30px;
+}
+.d12-banner {
+  background: var(--day-accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-align: center;
+  padding: 6px 8px;
+  border-bottom: 3px solid var(--ink);
+}
+.d12-poster h1 {
+  display: grid;
+  padding: 14px 16px 10px;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 52px;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+}
+.d12-poster h1 .d12-row2 {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.d12-poster h1 em {
+  font-style: normal;
+  color: var(--day-accent);
+}
+.d12-bill {
+  border-top: 3px solid var(--ink);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: var(--text-2);
+  padding: 7px 16px;
+}
+
+.d12-note {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 0 0 30px;
+  max-width: 410px;
+}
+.d12-note strong { color: var(--text); font-weight: 750; }
+
+/* ---- section cards: ink slabs on paper ---- */
+.d12-card {
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 14px 16px 16px;
+  margin-bottom: 22px;
+}
+.d12-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: -14px -16px 12px;
+  padding: 8px 16px;
+  background: var(--ink);
+  color: var(--bg);
+}
+.d12-h h2 {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.d12-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(239, 234, 225, 0.65);
+  white-space: nowrap;
+}
+.d12-p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin: 0 0 12px;
+}
+
+/* numbered events on the main card */
+.d12-card.lineup { box-shadow: 6px 6px 0 var(--day-accent); }
+.d12-card.lineup .p-exercise {
+  position: relative;
+  counter-increment: event;
+  border-width: 2px;
+  margin-bottom: 14px;
+}
+.d12-card.lineup { counter-reset: event; }
+.d12-card.lineup .p-exercise::before {
+  content: '0' counter(event);
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  background: var(--day-accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* checkboxes: square, ink-first */
+.d12 .p-check .box { border-radius: 0; border-width: 2px; }
+.d12 .p-exercise-log input { border-width: 2px; border-color: var(--border); }
+.d12 .p-water button { border-radius: 0; border-width: 2px; }
+.d12 .p-stopwatch-btn { border-radius: 0; }
+.d12 .p-notes { border-width: 2px; }
+
+/* auto protein-goal status row */
+.d12-goal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border: 2px dashed var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+.d12-goal .tick {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border: 2px solid var(--ink);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+.d12-goal[data-hit='true'] {
+  border-style: solid;
+  background: var(--ink);
+  color: var(--bg);
+}
+.d12-goal[data-hit='true'] .tick {
+  background: var(--day-accent);
+  border-color: var(--day-accent);
+  color: #fff;
+}
+
+.d12-signoff {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.9;
+  padding: 26px 12px 4px;
+}
+
+/* small screens: keep the masthead inside the column */
+@media (max-width: 380px) {
+  .d12-poster h1 { font-size: 44px; }
+}
