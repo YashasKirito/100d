@@ -1,0 +1,225 @@
+/* Day 13 — "handwritten journal": Sunday rest as a diary page. Cream ruled
+   paper, red margin line, taped-on note cards with a slight tilt, ballpoint
+   blue ink. The quietest page of the week, on purpose. */
+
+.d13 {
+  --bg: #faf6ec;
+  --paper: #fffdf6;
+  --rule: rgba(96, 130, 175, 0.18);
+  --margin-red: rgba(217, 92, 74, 0.5);
+  --surface: var(--paper);
+  --surface-2: #f3eedf;
+  --border: rgba(43, 36, 26, 0.16);
+  --border-strong: rgba(43, 36, 26, 0.6);
+  --text: #2b241a;
+  --text-2: #59503f;
+  --text-3: #97907e;
+  --day-accent: #2749c9;
+  --day-surface: var(--paper);
+  --day-border: var(--border);
+
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 8px;
+
+  /* ruled paper + red margin line */
+  background:
+    linear-gradient(90deg, transparent 34px, var(--margin-red) 34px, var(--margin-red) 35.5px, transparent 35.5px),
+    repeating-linear-gradient(transparent, transparent 27px, var(--rule) 27px, var(--rule) 28px),
+    var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+/* handwriting for the voice parts; lists stay legible system type */
+.d13-title h1,
+.d13-dateline,
+.d13-entry,
+.d13-daytag,
+.d13-back,
+.d13-h h2,
+.d13-signoff,
+.d13-protocol {
+  font-family: 'Bradley Hand', 'Segoe Print', 'Comic Sans MS', 'Marker Felt', cursive;
+}
+
+.d13-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom)) 26px;
+}
+
+/* ---- header ---- */
+.d13-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+.d13-back {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-3);
+}
+.d13-daytag {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--day-accent);
+  transform: rotate(-1.2deg);
+}
+
+/* ---- title ---- */
+.d13-title { margin-bottom: 18px; }
+.d13-title h1 {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+}
+.d13-underline {
+  width: 210px;
+  height: 3px;
+  margin-top: 2px;
+  background: var(--day-accent);
+  border-radius: 999px;
+  transform: rotate(-0.6deg);
+  opacity: 0.75;
+}
+.d13-dateline {
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--text-3);
+}
+
+/* ---- diary entry ---- */
+.d13-entry {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-2);
+  margin: 0 0 30px;
+}
+.d13-entry p + p { margin-top: 14px; }
+.d13-entry strong { color: var(--day-accent); font-weight: 700; }
+
+/* ---- taped note cards ---- */
+.d13-card {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(43, 36, 26, 0.08);
+  padding: 14px 16px 16px;
+  margin-bottom: 26px;
+}
+.d13-card.tape { transform: rotate(-0.4deg); }
+.d13-card.tape.alt { transform: rotate(0.4deg); }
+.d13-card.tape::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 92px;
+  height: 22px;
+  transform: translateX(-50%) rotate(-2deg);
+  background: rgba(233, 208, 128, 0.55);
+  border-left: 1px dashed rgba(43, 36, 26, 0.12);
+  border-right: 1px dashed rgba(43, 36, 26, 0.12);
+}
+.d13-card.tape.alt::before { transform: translateX(-50%) rotate(2deg); }
+
+.d13-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  border-bottom: 1px dashed var(--border-strong);
+  padding-bottom: 6px;
+}
+.d13-h h2 {
+  font-size: 19px;
+  font-weight: 700;
+}
+.d13-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d13-p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin: 4px 0 12px;
+}
+
+/* pinned measurement protocol */
+.d13-protocol {
+  list-style: none;
+  padding: 4px 0 2px;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+.d13-protocol li {
+  position: relative;
+  padding: 5px 0 5px 24px;
+}
+.d13-protocol li::before {
+  content: '→';
+  position: absolute;
+  left: 2px;
+  color: var(--day-accent);
+}
+.d13-protocol strong { color: var(--text); }
+
+/* auto protein-goal status row */
+.d13-goal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border: 1.5px dashed var(--border-strong);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+.d13-goal .tick {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+.d13-goal[data-hit='true'] {
+  border-style: solid;
+  border-color: var(--day-accent);
+  color: var(--text);
+}
+.d13-goal[data-hit='true'] .tick {
+  background: var(--day-accent);
+  border-color: var(--day-accent);
+  color: #fff;
+}
+
+.d13-signoff {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 15px;
+  line-height: 1.8;
+  padding: 22px 12px 4px;
+  transform: rotate(-0.5deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d13-card.tape,
+  .d13-card.tape.alt { transform: none; }
+}
