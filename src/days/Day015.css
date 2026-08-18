@@ -1,0 +1,235 @@
+/* Day 15 — "racing livery": phase 2 green flag. Asphalt dark, speed-yellow
+   accent, diagonal livery stripes, race-number plate, a checkered strip on
+   the session card. Beat the log = beat the lap time. */
+
+.d15 {
+  --bg: #101114;
+  --surface: #17181d;
+  --surface-2: #1e2026;
+  --border: rgba(244, 245, 247, 0.09);
+  --border-strong: rgba(244, 245, 247, 0.22);
+  --text: #f4f5f7;
+  --text-2: #a7abb4;
+  --text-3: #666b75;
+  --day-accent: #ffd234;
+  --day-surface: var(--surface-2);
+  --day-border: var(--border);
+
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 14px;
+
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: dark;
+}
+
+.d15-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 22px calc(40px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d15-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.d15-back {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+}
+.d15-daytag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--bg);
+  background: var(--day-accent);
+  padding: 4px 10px;
+  border-radius: 3px;
+  transform: skewX(-8deg);
+}
+
+/* ---- title: livery stripes + number plate ---- */
+.d15-title { margin-bottom: 14px; }
+.d15-stripes {
+  height: 10px;
+  margin-bottom: 18px;
+  background:
+    repeating-linear-gradient(
+      -60deg,
+      var(--day-accent) 0 18px,
+      transparent 18px 26px,
+      rgba(244, 245, 247, 0.85) 26px 34px,
+      transparent 34px 60px
+    );
+  border-radius: 2px;
+}
+.d15-plate {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.d15-num {
+  flex: none;
+  width: 74px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #101114;
+  font-size: 40px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.04em;
+  border-radius: 10px;
+  border: 3px solid var(--day-accent);
+  transform: rotate(-2deg);
+}
+.d15-plate-text h1 {
+  font-size: 40px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.d15-sub {
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--day-accent);
+}
+.d15-rules {
+  margin-top: 16px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  border-top: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  padding: 7px 2px;
+}
+
+.d15-note {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 24px 0 30px;
+  max-width: 410px;
+}
+.d15-note strong { color: var(--day-accent); font-weight: 700; }
+
+/* ---- cards ---- */
+.d15-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+.d15-card.race { border-color: var(--day-accent); }
+
+/* checkered strip across the top of the session card */
+.d15-flag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background:
+    repeating-conic-gradient(#f4f5f7 0% 25%, #101114 0% 50%) 0 0 / 16px 8px;
+  opacity: 0.9;
+}
+.d15-card.race { padding-top: 22px; }
+
+.d15-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+.d15-h h2 {
+  font-size: 15px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.d15-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d15-p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin: 6px 0 12px;
+}
+
+/* the test card gets accent treatment inside the list */
+.d15-card.race .p-exercise:first-of-type {
+  border-color: var(--day-accent);
+  background: rgba(255, 210, 52, 0.06);
+}
+.d15-card.race .p-exercise:first-of-type .p-exercise-name {
+  color: var(--day-accent);
+}
+
+/* auto protein-goal status row */
+.d15-goal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+.d15-goal .tick {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+.d15-goal[data-hit='true'] {
+  border-color: var(--day-accent);
+  color: var(--text);
+}
+.d15-goal[data-hit='true'] .tick {
+  background: var(--day-accent);
+  border-color: var(--day-accent);
+  color: #101114;
+}
+
+.d15-signoff {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.9;
+  padding: 26px 12px 4px;
+}
