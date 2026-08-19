@@ -1,0 +1,186 @@
+/* Day 16 — "botanical plate": Wednesday rest as a page from a 19th-century
+   botanical folio. Cream paper, fine double-rule frames, old-style serif,
+   deep leaf green. Rest is when the growing happens — so the rest day is
+   the growth plate. */
+
+.d16 {
+  --bg: #f7f3e8;
+  --paper: #fdfaf1;
+  --surface: var(--paper);
+  --surface-2: #efe9d8;
+  --border: rgba(51, 59, 42, 0.22);
+  --border-strong: rgba(51, 59, 42, 0.55);
+  --text: #2c3325;
+  --text-2: #5a6150;
+  --text-3: #939884;
+  --day-accent: #3d7a4e;
+  --day-surface: var(--paper);
+  --day-border: var(--border);
+
+  --radius-s: 3px;
+  --radius-m: 4px;
+  --radius-l: 6px;
+
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  color-scheme: light;
+}
+
+.d16-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 26px 22px calc(42px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d16-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 34px;
+}
+.d16-back {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-3);
+}
+.d16-daytag {
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--day-accent);
+}
+
+/* ---- title ---- */
+.d16-title {
+  text-align: center;
+  margin-bottom: 26px;
+}
+.d16-leaf {
+  font-size: 26px;
+  color: var(--day-accent);
+  margin-bottom: 6px;
+}
+.d16-title h1 {
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.d16-latin {
+  margin-top: 8px;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-3);
+}
+
+/* ---- the framed plate: double rule, like a folio engraving ---- */
+.d16-frame {
+  border: 1px solid var(--border-strong);
+  outline: 1px solid var(--border);
+  outline-offset: 3px;
+  background: var(--paper);
+  padding: 18px 18px 16px;
+  margin: 0 2px 34px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-2);
+}
+.d16-frame p + p { margin-top: 12px; }
+.d16-frame strong { color: var(--day-accent); font-weight: 700; }
+.d16-frame em { color: var(--text); }
+.d16-fig {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--day-accent);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---- section cards ---- */
+.d16-card {
+  background: var(--paper);
+  border: 1px solid var(--border-strong);
+  outline: 1px solid var(--border);
+  outline-offset: 3px;
+  border-radius: 0;
+  padding: 15px 16px 16px;
+  margin: 0 2px 30px;
+}
+.d16-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.d16-h h2 {
+  font-size: 17px;
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+}
+.d16-tag {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.d16-p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 4px 0 12px;
+}
+
+/* keep primitives serif-adjacent but legible */
+.d16 .p-check-label { font-size: 15px; }
+.d16 .p-check-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+
+/* auto protein-goal status row */
+.d16-goal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border: 1px dashed var(--border-strong);
+  font-size: 13px;
+  color: var(--text-2);
+}
+.d16-goal .tick {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+.d16-goal[data-hit='true'] {
+  border-style: solid;
+  border-color: var(--day-accent);
+  color: var(--text);
+}
+.d16-goal[data-hit='true'] .tick {
+  background: var(--day-accent);
+  border-color: var(--day-accent);
+  color: #fff;
+}
+
+.d16-signoff {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.8;
+  padding: 20px 12px 4px;
+}
