@@ -1,0 +1,211 @@
+/* Day 17 — "art deco": the push session as a 1920s revue. Near-black stage,
+   gold leaf accent, cream playbill type, geometric double-rule frames and
+   diamond ornaments. Elegant, upright, a little theatrical. */
+
+.d17 {
+  --bg: #16130e;
+  --surface: #1d1913;
+  --surface-2: #262017;
+  --border: rgba(212, 175, 90, 0.22);
+  --border-strong: rgba(212, 175, 90, 0.55);
+  --text: #f0e8d8;
+  --text-2: #b5aa93;
+  --text-3: #7d745f;
+  --day-accent: #d4af5a;
+  --day-surface: var(--surface-2);
+  --day-border: var(--border);
+
+  --radius-s: 2px;
+  --radius-m: 3px;
+  --radius-l: 4px;
+
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  color-scheme: dark;
+}
+
+.d17-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 26px 22px calc(42px + env(safe-area-inset-bottom));
+}
+
+/* ---- header ---- */
+.d17-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.d17-back {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+}
+.d17-daytag {
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  color: var(--day-accent);
+  border: 1px solid var(--border-strong);
+  padding: 5px 12px;
+}
+
+/* ---- marquee title ---- */
+.d17-marquee {
+  text-align: center;
+  border: 1px solid var(--border-strong);
+  outline: 1px solid var(--border);
+  outline-offset: 4px;
+  padding: 18px 16px 16px;
+  margin: 0 3px 28px;
+  background:
+    radial-gradient(ellipse at 50% -30%, rgba(212, 175, 90, 0.12), transparent 60%),
+    var(--surface);
+}
+.d17-ornament {
+  color: var(--day-accent);
+  font-size: 9px;
+  letter-spacing: 0.6em;
+  margin-bottom: 10px;
+}
+.d17-presents {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+.d17-marquee h1 {
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--day-accent);
+  line-height: 1.1;
+}
+.d17-act {
+  margin-top: 10px;
+  font-size: 10.5px;
+  letter-spacing: 0.26em;
+  color: var(--text-2);
+}
+.d17-rule {
+  margin: 14px auto 0;
+  width: 120px;
+  height: 1px;
+  background: var(--border-strong);
+  position: relative;
+}
+.d17-rule::after {
+  content: '◆';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface);
+  padding: 0 8px;
+  color: var(--day-accent);
+  font-size: 9px;
+}
+
+.d17-note {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-2);
+  margin: 0 0 30px;
+  max-width: 420px;
+}
+.d17-note strong { color: var(--day-accent); font-weight: 600; }
+
+/* ---- cards: playbill panels ---- */
+.d17-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 15px 16px 16px;
+  margin: 0 3px 24px;
+}
+.d17-card.main {
+  border-color: var(--border-strong);
+  outline: 1px solid var(--border);
+  outline-offset: 4px;
+}
+.d17-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.d17-h h2 {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--day-accent);
+}
+.d17-tag {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--text-3);
+  white-space: nowrap;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+}
+.d17-p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 6px 0 12px;
+}
+
+/* keep list items readable sans-serif */
+.d17 .p-check-label,
+.d17 .p-exercise-name { font-family: system-ui, -apple-system, sans-serif; }
+.d17 .p-check-sub,
+.d17 .p-exercise-note { font-family: system-ui, -apple-system, sans-serif; }
+
+/* auto protein-goal status row */
+.d17-goal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border: 1px dashed var(--border-strong);
+  font-size: 13px;
+  color: var(--text-2);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+.d17-goal .tick {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border: 1px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+.d17-goal[data-hit='true'] {
+  border-style: solid;
+  border-color: var(--day-accent);
+  color: var(--text);
+}
+.d17-goal[data-hit='true'] .tick {
+  background: var(--day-accent);
+  border-color: var(--day-accent);
+  color: #16130e;
+}
+
+.d17-signoff {
+  text-align: center;
+  color: var(--text-3);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  line-height: 2;
+  padding: 24px 12px 4px;
+}
